@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Stuff</title>
+<meta name="description" content="One menu for everything on GitHub — live pages and code.">
+<style>
+  :root{
+    --bg:#f7f7f9; --card:#fff; --ink:#1a1a1f; --muted:#6b6b78;
+    --line:#e3e3ea; --accent:#3f5bd9; --accent-soft:#eaeeff;
+    --live:#1f8a4c; --live-bg:#e8f6ee;
+    --priv:#8a6d1f; --priv-bg:#fbf3dd;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#101014;--card:#1a1a20;--ink:#ececf2;--muted:#9c9cae;--line:#2a2a33;
+      --accent:#8098ff;--accent-soft:#1e2340;--live:#5fd18d;--live-bg:#16301f;
+      --priv:#e0c06a;--priv-bg:#332a12;}
+  }
+  :root[data-theme="dark"]{--bg:#101014;--card:#1a1a20;--ink:#ececf2;--muted:#9c9cae;--line:#2a2a33;
+    --accent:#8098ff;--accent-soft:#1e2340;--live:#5fd18d;--live-bg:#16301f;
+    --priv:#e0c06a;--priv-bg:#332a12;}
+  :root[data-theme="light"]{--bg:#f7f7f9;--card:#fff;--ink:#1a1a1f;--muted:#6b6b78;--line:#e3e3ea;
+    --accent:#3f5bd9;--accent-soft:#eaeeff;--live:#1f8a4c;--live-bg:#e8f6ee;
+    --priv:#8a6d1f;--priv-bg:#fbf3dd;}
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 16px 60px;
+    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    overflow-wrap:break-word}
+  .wrap{max-width:680px;margin:0 auto}
+  header{padding:34px 0 14px}
+  h1{font-size:clamp(26px,6vw,34px);margin:0 0 4px;letter-spacing:-.02em}
+  .sub{color:var(--muted);margin:0;font-size:15px}
+  .search{width:100%;padding:12px 14px;font-size:16px;border:1px solid var(--line);
+    border-radius:12px;background:var(--card);color:var(--ink);margin:16px 0 4px}
+  .search::placeholder{color:var(--muted)}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);
+    margin:30px 0 10px;display:flex;align-items:center;gap:9px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  a.item{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:13px 15px;margin-bottom:9px;text-decoration:none;color:var(--ink);
+    transition:border-color .12s, transform .12s}
+  a.item:hover,a.item:focus{border-color:var(--accent);transform:translateY(-1px)}
+  .row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .name{font-weight:650;font-size:16px}
+  .desc{color:var(--muted);font-size:13.5px;margin-top:3px}
+  .tag{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+    padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .t-live{background:var(--live-bg);color:var(--live)}
+  .t-priv{background:var(--priv-bg);color:var(--priv)}
+  .t-lang{background:var(--accent-soft);color:var(--accent)}
+  .empty{color:var(--muted);font-size:14px;padding:14px 0;display:none}
+  footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer a{color:var(--accent)}
+  .theme-btn{position:fixed;top:12px;right:12px;background:var(--card);border:1px solid var(--line);
+    color:var(--ink);border-radius:99px;padding:6px 12px;font-size:12px;cursor:pointer;z-index:10}
+  section.hidden,h2.hidden{display:none}
+</style>
+</head>
+<body>
+<button class="theme-btn" id="tbtn">◐</button>
+<div class="wrap">
+
+<header>
+  <h1>My Stuff</h1>
+  <p class="sub">Everything on GitHub, in one place.</p>
+</header>
+
+<input class="search" id="q" type="search" placeholder="Search… (sourdough, joystick, scale)" autocomplete="off">
+<p class="empty" id="empty">Nothing matches that.</p>
+
+<div id="list">
+
+<h2 data-sec>Open &amp; use</h2>
+<section data-sec>
+  <a class="item" href="https://farshou5.github.io/game-catalog/">
+    <div class="row"><span class="name">GamePackage — projects by tier</span><span class="tag t-live">Live</span></div>
+    <div class="desc">1,050 complete Unity projects, ranked and sorted into tiers.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/game-catalog/assets.html">
+    <div class="row"><span class="name">GamePackage — assets by category</span><span class="tag t-live">Live</span></div>
+    <div class="desc">5,289 Unity assets browsable by section, category and sub-category.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/soft-sourdough/">
+    <div class="row"><span class="name">Soft Sourdough Milk Loaf</span><span class="tag t-live">Live</span></div>
+    <div class="desc">Child-friendly tangzhong sandwich bread. Scales to any flour weight.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/driving-exam/">
+    <div class="row"><span class="name">Driving Exam</span><span class="tag t-live">Live</span></div>
+    <div class="desc">Lebanon driving theory practice, Arabic and English.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/hafi-tms/">
+    <div class="row"><span class="name">Hafi TMS</span><span class="tag t-live">Live</span></div>
+    <div class="desc">Transport management system.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/scale-guide/">
+    <div class="row"><span class="name">Body Fat Scale — full guide</span><span class="tag t-live">Live</span></div>
+    <div class="desc">Xiangshan Ito 8-electrode scale. Buying guide and how to read it.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/scale-guide/ar.html">
+    <div class="row"><span class="name">دليل ميزان الدهون — عربي</span><span class="tag t-live">Live</span></div>
+    <div class="desc">The same scale guide in Arabic.</div>
+  </a>
+</section>
+
+<h2 data-sec>Joystick</h2>
+<section data-sec>
+  <a class="item" href="https://farshou5.github.io/game-catalog/picks.html">
+    <div class="row"><span class="name">Top asset &amp; project picks</span><span class="tag t-live">Live</span></div>
+    <div class="desc">Shortlist of the best assets and projects for Joystick.</div>
+  </a>
+  <a class="item" href="https://farshou5.github.io/game-catalog/joystick.html">
+    <div class="row"><span class="name">Motion-game picks</span><span class="tag t-live">Live</span></div>
+    <div class="desc">Games that suit motion control.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/joystick-unity">
+    <div class="row"><span class="name">joystick-unity</span><span class="tag t-priv">Private</span><span class="tag t-lang">Unity</span></div>
+    <div class="desc">The Unity app — the canonical version.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/Joystick">
+    <div class="row"><span class="name">Joystick</span><span class="tag t-priv">Private</span><span class="tag t-lang">Kotlin</span></div>
+    <div class="desc">Android gesture controller, Kotlin and Compose.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/Joystick-flutter">
+    <div class="row"><span class="name">Joystick-flutter</span><span class="tag t-priv">Private</span><span class="tag t-lang">Dart</span></div>
+    <div class="desc">The Flutter port.</div>
+  </a>
+</section>
+
+<h2 data-sec>Business</h2>
+<section data-sec>
+  <a class="item" href="https://github.com/farshou5/Farshoukh-Almaha">
+    <div class="row"><span class="name">Farshoukh-Almaha</span><span class="tag t-priv">Private</span><span class="tag t-lang">C++</span></div>
+    <div class="desc">Main project.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/Farshoukh-Almaha-app">
+    <div class="row"><span class="name">Farshoukh-Almaha-app</span><span class="tag t-priv">Private</span><span class="tag t-lang">Dart</span></div>
+    <div class="desc">The Flutter app.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/hafi-tms">
+    <div class="row"><span class="name">hafi-tms</span><span class="tag t-lang">HTML</span></div>
+    <div class="desc">Source for the Hafi TMS site.</div>
+  </a>
+</section>
+
+<h2 data-sec>Hardware &amp; IoT</h2>
+<section data-sec>
+  <a class="item" href="https://github.com/farshou5/garage-relay">
+    <div class="row"><span class="name">garage-relay</span><span class="tag t-priv">Private</span><span class="tag t-lang">JavaScript</span></div>
+    <div class="desc">Garage door relay control.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/TTGO-T-Beam">
+    <div class="row"><span class="name">TTGO-T-Beam</span><span class="tag t-lang">C</span></div>
+    <div class="desc">LoRa / GPS board firmware.</div>
+  </a>
+</section>
+
+<h2 data-sec>Sites — source code</h2>
+<section data-sec>
+  <a class="item" href="https://github.com/farshou5/game-catalog">
+    <div class="row"><span class="name">game-catalog</span><span class="tag t-lang">HTML</span></div>
+    <div class="desc">Source for the GamePackage catalog pages.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/soft-sourdough">
+    <div class="row"><span class="name">soft-sourdough</span><span class="tag t-lang">HTML</span></div>
+    <div class="desc">Source for the bread recipe.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/scale-guide">
+    <div class="row"><span class="name">scale-guide</span><span class="tag t-lang">HTML</span></div>
+    <div class="desc">Source for the scale guide, English and Arabic.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/driving-exam">
+    <div class="row"><span class="name">driving-exam</span><span class="tag t-lang">Flutter</span></div>
+    <div class="desc">Source for the driving theory exam.</div>
+  </a>
+</section>
+
+<h2 data-sec>Older</h2>
+<section data-sec>
+  <a class="item" href="https://github.com/farshou5/SamAR">
+    <div class="row"><span class="name">SamAR</span><span class="tag t-priv">Private</span></div>
+    <div class="desc">AR project, 2021.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/june23">
+    <div class="row"><span class="name">june23</span><span class="tag t-priv">Private</span><span class="tag t-lang">C#</span></div>
+    <div class="desc">2021.</div>
+  </a>
+  <a class="item" href="https://github.com/farshou5/Testing">
+    <div class="row"><span class="name">Testing</span><span class="tag t-lang">C#</span></div>
+    <div class="desc">2023.</div>
+  </a>
+</section>
+
+</div>
+
+<footer>
+  <a href="https://github.com/farshou5?tab=repositories">All repositories on GitHub →</a><br>
+  <span style="font-size:12px">Private repos only open if you're signed in to GitHub.</span>
+</footer>
+
+</div>
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById('tbtn').onclick=function(){
+    var c=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    root.setAttribute('data-theme',c==='dark'?'light':'dark');
+  };
+  var q=document.getElementById('q'),
+      items=[].slice.call(document.querySelectorAll('a.item')),
+      heads=[].slice.call(document.querySelectorAll('h2[data-sec]')),
+      secs=[].slice.call(document.querySelectorAll('section[data-sec]')),
+      empty=document.getElementById('empty');
+  q.addEventListener('input',function(){
+    var t=q.value.trim().toLowerCase(), any=false;
+    items.forEach(function(a){
+      var hit=!t||a.textContent.toLowerCase().indexOf(t)>-1;
+      a.style.display=hit?'block':'none';
+      if(hit)any=true;
+    });
+    secs.forEach(function(s,i){
+      var vis=s.querySelector('a.item:not([style*="none"])');
+      s.classList.toggle('hidden',!vis);
+      heads[i].classList.toggle('hidden',!vis);
+    });
+    empty.style.display=any?'none':'block';
+  });
+})();
+</script>
+</body>
+</html>
