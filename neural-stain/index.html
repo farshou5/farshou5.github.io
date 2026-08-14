@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neural Stain — Festival Rebuild</title>
+<meta name="description" content="The rebuilt script, cast, change list and production plan for Neural Stain — Higgsfield Global Film Festival, deadline 3 Sep 2026.">
+<style>
+  :root{
+    --bg:#0c0d10; --panel:#14161b; --panel2:#191c22; --ink:#e9eaf0; --muted:#9aa0b0;
+    --line:#262a33; --accent:#6ee7a8; --accent-dim:#1b3328; --warn:#ffcb6b; --warn-dim:#332a12;
+    --bad:#ff7a7a; --bad-dim:#3a1c1c; --hud:#7fd7ff;
+  }
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 16px 80px;
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-wrap:break-word}
+  .wrap{max-width:760px;margin:0 auto}
+
+  header{padding:34px 0 6px}
+  .kicker{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent)}
+  h1{font-size:clamp(30px,8vw,46px);margin:10px 0 6px;letter-spacing:-.03em;line-height:1.05}
+  .sub{color:var(--muted);margin:0;font-size:15.5px}
+
+  .status{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+  .chip{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;
+    padding:8px 11px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:700}
+  .chip.go{border-color:#2c5c44;background:var(--accent-dim);color:var(--accent)}
+  .chip.warn{border-color:#5c4a1c;background:var(--warn-dim);color:var(--warn)}
+
+  nav{position:sticky;top:0;z-index:5;background:rgba(12,13,16,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);margin:22px -16px 0;padding:10px 16px}
+  nav .scroller{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav .scroller::-webkit-scrollbar{display:none}
+  nav a{white-space:nowrap;font:600 12.5px/1 -apple-system,sans-serif;color:var(--muted);
+    text-decoration:none;padding:8px 11px;border:1px solid var(--line);border-radius:99px;background:var(--panel)}
+  nav a:hover{color:var(--ink);border-color:var(--accent)}
+
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);
+    margin:44px 0 4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  h2 + .h2sub{font-size:clamp(22px,5vw,28px);font-weight:700;letter-spacing:-.02em;margin:0 0 14px}
+  h3{font-size:17px;margin:26px 0 8px;letter-spacing:-.01em}
+
+  p{margin:0 0 12px}
+  .lede{font-size:17px;color:var(--ink)}
+  .muted{color:var(--muted)}
+  .small{font-size:14px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin:0 0 12px}
+  .card.warn{border-color:#5c4a1c;background:var(--warn-dim)}
+  .card.bad{border-color:#5c2c2c;background:var(--bad-dim)}
+  .card.go{border-color:#2c5c44;background:var(--accent-dim)}
+  .card h4{margin:0 0 8px;font-size:15px;letter-spacing:-.01em}
+
+  ul{margin:0 0 12px;padding-left:20px}
+  li{margin-bottom:7px}
+
+  /* ---- screenplay ---- */
+  .scene{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:0;margin:0 0 16px;overflow:hidden}
+  .scene-head{background:var(--panel2);border-bottom:1px solid var(--line);padding:13px 16px}
+  .slug{font:700 13px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--hud)}
+  .tc{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);margin-top:6px;display:block}
+  .scene-body{padding:15px 16px 6px}
+  .action{color:#c6cad6;font-size:15.5px;margin:0 0 13px}
+  .action em{color:var(--muted);font-style:italic}
+
+  .line{display:grid;grid-template-columns:52px 1fr;gap:10px;margin:0 0 13px;align-items:start}
+  .id{font:600 11.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#5f6675;
+    padding-top:2px;user-select:all}
+  .who{font:800 12.5px/1.6 -apple-system,sans-serif;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent);display:block}
+  .who.lens{color:var(--hud)}
+  .who.moe{color:#ffd08a}
+  .who.father{color:#c3a6ff}
+  .who.layla{color:#ff9ec4}
+  .who.ghena{color:#8ee6d0}
+  .who.other{color:#b9bfcd}
+  .say{font-size:16.5px;color:var(--ink);margin-top:1px}
+  .paren{color:var(--muted);font-size:14px;font-style:italic}
+  .keep{display:inline-block;font:700 9.5px/1 -apple-system,sans-serif;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--accent);border:1px solid #2c5c44;background:var(--accent-dim);
+    border-radius:99px;padding:3px 7px;margin-left:7px;vertical-align:2px}
+  .new{color:var(--warn);border-color:#5c4a1c;background:var(--warn-dim)}
+  .why{border-top:1px dashed var(--line);margin:4px 0 0;padding:12px 16px 14px;background:#111318;
+    font-size:14.5px;color:var(--muted)}
+  .why b{color:var(--ink)}
+
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0 0 14px}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font:700 11.5px/1.3 ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  td.t{font:600 12.5px/1.5 ui-monospace,monospace;color:var(--hud);white-space:nowrap}
+
+  .cast{display:grid;gap:11px}
+  .who-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .who-name{font:800 13px/1 -apple-system,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+  .who-role{color:var(--muted);font-size:14px;margin:6px 0 8px}
+  .fix{font-size:14.5px}
+  .fix b{color:var(--accent);font-weight:700}
+
+  ol.decisions{padding-left:20px}
+  ol.decisions li{margin-bottom:14px}
+  .rec{display:inline-block;font:700 10px/1 -apple-system,sans-serif;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent);border:1px solid #2c5c44;background:var(--accent-dim);
+    border-radius:99px;padding:4px 8px;margin-left:6px}
+
+  pre.tx{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;
+    overflow-x:auto;font:12.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+  footer a{color:var(--accent)}
+  a.back{color:var(--muted);text-decoration:none;font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="back" href="https://farshou5.github.io/">← My Stuff</a>
+  <div class="kicker" style="margin-top:14px">Higgsfield Global Film Festival · rebuild</div>
+  <h1>Neural Stain</h1>
+  <p class="sub">The full rebuilt script, the cast, the change list, and how we shoot it. Nothing here is generated yet — this is paper.</p>
+  <div class="status">
+    <span class="chip warn">Deadline <b>3 Sep 2026</b></span>
+    <span class="chip">Target runtime <b>~4:55</b></span>
+    <span class="chip">Original <b>7:41</b></span>
+    <span class="chip go">Awaiting <b>your GO</b></span>
+  </div>
+</header>
+
+<nav><div class="scroller">
+  <a href="#stand">Where we stand</a>
+  <a href="#cast">The people</a>
+  <a href="#script">The script</a>
+  <a href="#changes">What changed</a>
+  <a href="#decisions">Your 5 decisions</a>
+  <a href="#plan">How we build it</a>
+  <a href="#original">Original transcript</a>
+</div></nav>
+
+<h2 id="stand">01</h2>
+<div class="h2sub">Where we stand</div>
+
+<div class="card bad">
+  <h4>The film as it exists today cannot be submitted</h4>
+  <p class="small" style="margin-bottom:8px">Not "weak" — ineligible. The rules require the film to be generated inside Higgsfield and finalised in Cinema Studio, carrying Higgsfield's watermark and packshot. Your cut carries the Neural Stain logo on every frame and was made in Veo. On top of that: 1024×576, 32&nbsp;kbps audio, faces that change between shots, a typo burned into the VFX at 1:54 (<b>BLOCKEL</b> → BLOCKED), and 7:41 runtime.</p>
+  <p class="small" style="margin:0">Judges triage thousands of entries in the first 30–60 seconds. As-is: <b>0%</b>.</p>
+</div>
+
+<div class="card">
+  <h4>Rebuilt properly — the honest number</h4>
+  <p class="small" style="margin-bottom:8px">Three independent reads: Codex <b>1–3%</b>, Kimi <b>5–15%</b>, me <b>~5%</b>. Realistic target is the ten <b>$10,000</b> honorable mentions. The $500k / $200k / $100k prizes are a lottery ticket with 14 winners worldwide — anyone telling you otherwise is selling something.</p>
+  <p class="small" style="margin:0">Cost of closing the gap between 0% and 5–15%: <b>15–19 focused working days.</b> You have 20.</p>
+</div>
+
+<div class="card">
+  <h4>What's genuinely good — and stays</h4>
+  <p class="small" style="margin:0">The story spine. All three reads put it above the median entry: a father who cannot reach his son with words, so he builds him truth instead; the good-deed timer; the bottle that echoes into a flood; "Beautiful, but not her"; the granddaughter fixing his code; the lens case left on the grave. <b>The problem was never your story.</b> It was everything around it — and one unfired gun, fixed below.</p>
+</div>
+
+<div class="card warn">
+  <h4>One festival rule that affects the family</h4>
+  <p class="small" style="margin:0">No real person's face or voice may be used — including yours. Moe, Layla, Ghena and the Father stay <b>AI-created characters named after your family</b>, not trained on their photographs. Your family is in the story, not on the screen.</p>
+</div>
+
+<h2 id="cast">02</h2>
+<div class="h2sub">The people, and how each one changes</div>
+<p class="muted small">You asked for them by name. These are the names used in every line below.</p>
+
+<div class="cast">
+  <div class="who-card">
+    <div class="who-name" style="color:#ffd08a">MOE</div>
+    <div class="who-role">The son. Thirty. Yours.</div>
+    <div class="fix">Good arc, but in the old cut he changes <em>in a montage, automatically</em>. <b>Fix:</b> he gets one on-screen failure — he accepts emotional suppression once, feels everything go flat, and revokes it frightened. That single beat is what makes his refusal at the grave earned instead of handed to him.</div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#c3a6ff">FATHER</div>
+    <div class="who-role">Sixties. Never named on screen — he is "Dad".</div>
+    <div class="fix">Currently a flawless wise man who belittles his son and hands him thought-control technology with zero ethical weight. <b>Fix:</b> one crack. He deflects his own diagnosis with a joke ("Old hardware"), and when Moe asks <em>why now</em>, he doesn't answer. Loving, flawed, dying — not an oracle.</div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#ff9ec4">LAYLA</div>
+    <div class="who-role">Moe's fiancée, then wife.</div>
+    <div class="fix">Currently a laughing reward: date, wedding, pregnancy, grave — no personality. <b>Fix:</b> she gets the joke (it's hers now, not his), and she gets the one moment that costs him something: she notices his eyes drifting mid-date and calls it. He takes the lenses out. All three reads called this the strongest available human moment in the film.</div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#8ee6d0">GHENA</div>
+    <div class="who-role">The eldest. Four years old in the last act.</div>
+    <div class="fix">She stays on screen — she is structural, not decoration. The laptop beat ("fixing my father's code") is the legacy payoff, but it plays <b>visually</b>, with no subtitle gag; one subtitled line in an unsubtitled film reads as an error.</div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#8ee6d0">LANA</div>
+    <div class="who-role">The second daughter — the pregnancy.</div>
+    <div class="fix"><b>Recommendation: keep her as the bump, not a child.</b> The bump at the grave says exactly what the film means — the family keeps growing past his father's death; Lana is the future he'll never meet but made possible. A fifth consistent character is also the hardest thing AI generation does. One optional line puts her name in the film: <em>"Lana's kicking."</em></div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#b9bfcd">THE HONEY SELLER</div>
+    <div class="who-role">The man at the market. Two lines.</div>
+    <div class="fix">In the old cut the lens states accusations as fact ("fake smile, diluted product") with no evidence, and he's contrasted against an "authentic" old woman — a bad look and accidentally an argument that algorithmic suspicion equals truth. <b>Fix:</b> the lens gives a probability, Moe asks "Do you know that?", the lens admits it's an inference, and Moe walks away politely. He's a man, not a villain.</div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#7fd7ff">LENS</div>
+    <div class="who-role">The AI voice. The seventh character — and the antagonist.</div>
+    <div class="fix">It never had a want. <b>Fix:</b> it keeps offering to take pain away — anger on the road, panic in the kitchen, grief at the grave. Always helpful, never forced. <em>"Only if you allow it."</em> The film is the story of a man learning to say no to it.</div>
+  </div>
+  <div class="who-card">
+    <div class="who-name" style="color:#b9bfcd">THE PRISONERS <span class="paren">— deleted</span></div>
+    <div class="who-role">The cold open.</div>
+    <div class="fix">Gone, unanimously. A debunked urban legend told as fact in the first ten seconds, using anonymous men as disposable bodies, on characters who never return — and it burns your most valuable thirty seconds. Replaced by the flash-forward below.</div>
+  </div>
+</div>
+
+<h2 id="script">03</h2>
+<div class="h2sub">The script</div>
+<p class="lede">Every line is numbered. To change one, just send me the number — <span class="muted">"3.09 too cold", "1.16 keep the old joke"</span> — and I'll rewrite that line without touching the rest.</p>
+<p class="muted small"><span class="keep">KEPT</span> = your original words, unchanged. <span class="keep new">NEW</span> = written for this rebuild.</p>
+
+<!-- COLD OPEN -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Cold open — Ext. woodland cemetery — morning</div>
+    <span class="tc">0:00 – 0:18 &nbsp;·&nbsp; 18 sec &nbsp;·&nbsp; we do not yet know where we are</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">Extreme close on an eye. A contact lens catches the light. Reflected in it, out of focus: white flowers. Wind. Distant birds. No music, no score, nothing.</p>
+    <div class="line"><span class="id">0.01</span><span><span class="who lens">Lens</span><span class="say">Grief detected. Suppression available. <span class="keep new">New</span></span></span></div>
+    <p class="action">MOE does not answer. He blinks, slowly. We never see what he is looking at.<br>Hard cut to black. HUD-type card:</p>
+    <p class="action" style="font-family:ui-monospace,monospace;letter-spacing:.12em;color:var(--hud)">4 YEARS EARLIER</p>
+  </div>
+  <div class="why"><b>Why:</b> the hook and the promise in one move. The audience spends the whole film waiting to find out what he was asked — and the answer is the last thing he says. This is the single biggest structural fix; Codex and Kimi proposed it independently.</div>
+</div>
+
+<!-- ACT 1 -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 1 · The gift — Int. father's den — evening</div>
+    <span class="tc">0:18 – 1:25 &nbsp;·&nbsp; 67 sec &nbsp;·&nbsp; was 75 sec, tightened</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">Wood panelling, two warm lamps, a workbench covered in small optics and tools. MOE (30) on the couch, burger in hand. FATHER (60s) at the bench, not looking up.</p>
+
+    <div class="line"><span class="id">1.01</span><span><span class="who moe">Moe</span><span class="say">Dad. I'm going to propose to Layla. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.02</span><span><span class="who father">Father</span><span class="say">Propose. You think you're ready for that? <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.03</span><span><span class="who moe">Moe</span><span class="say">I love her. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.04</span><span><span class="who father">Father</span><span class="say">Love is easy. Responsibility isn't. You can't even control what you eat. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.05</span><span><span class="who moe">Moe</span><span class="paren">(mouth full, grinning)</span><span class="say">I'd rather die ten years earlier happy than spend ten extra years eating broccoli and living in the gym. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.06</span><span><span class="who father">Father</span><span class="say">You think like a child. You're in my house, on my money — and you want to build a family. <span class="keep">Kept</span></span></span></div>
+
+    <p class="action">Silence. The father opens a small steel case. Two lenses suspended in fluid.</p>
+
+    <div class="line"><span class="id">1.07</span><span><span class="who father">Father</span><span class="say">Here. You need clarity. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.08</span><span><span class="who moe">Moe</span><span class="say">My vision's fine. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.09</span><span><span class="who father">Father</span><span class="say">They're not for your eyesight. They're AI lenses. I've been building them since before you could walk. <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">1.10</span><span><span class="who moe">Moe</span><span class="say">What do they do? <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.11</span><span><span class="who father">Father</span><span class="say">They show you the consequences of your choices — before you make them. They read your thoughts. And when they have to, they override them. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.12</span><span><span class="who moe">Moe</span><span class="say">Override? They control what I see? What I feel? <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.13</span><span><span class="who father">Father</span><span class="say">Only if you allow it. <span class="keep">Kept</span></span></span></div>
+
+    <p class="action"><em>Hold here. Two full seconds on the father's face. This line is the whole film — in the old cut it was buried mid-scene and never used again.</em></p>
+
+    <div class="line"><span class="id">1.14</span><span><span class="who father">Father</span><span class="say">One more thing. A good deed every twenty-four hours, or they shut down. Permanently. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">1.15</span><span><span class="who moe">Moe</span><span class="say">Why? <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">1.16</span><span><span class="who father">Father</span><span class="paren">(half a smile — the joke is covering something)</span><span class="say">Because I built them to get you off my couch. <span class="keep new">New</span></span></span></div>
+
+    <p class="action">Moe puts them in. First activation: the HUD blooms over the <em>real</em> room — grain, lamps, dust. No glowing brain, no stock VFX.</p>
+
+    <div class="line"><span class="id">1.17</span><span><span class="who lens">Lens</span><span class="say">Clarity mode active. <span class="keep">Kept</span></span></span></div>
+
+    <p class="action">Moe turns to look at his father. Labels resolve over him, quietly, without ceremony:<br><span style="font-family:ui-monospace,monospace;color:var(--hud);font-size:13.5px">FATIGUE: SEVERE &nbsp;·&nbsp; STRESS: HIGH &nbsp;·&nbsp; CARDIAC LOAD: ELEVATED</span></p>
+
+    <div class="line"><span class="id">1.18</span><span><span class="who moe">Moe</span><span class="say">Dad… what is this? <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">1.19</span><span><span class="who father">Father</span><span class="paren">(waves it away, turns back to the bench)</span><span class="say">Old hardware. <span class="keep new">New</span></span></span></div>
+
+    <p class="action">Moe lets it go. We don't.</p>
+  </div>
+  <div class="why"><b>Why:</b> his death is planted in act one, disguised as a joke — so the grave doesn't arrive from nowhere. The 24-hour timer finally has a reason, in his own voice. The activation is diegetic, which is both better filmmaking and one less generated VFX shot to drift.</div>
+</div>
+
+<!-- ACT 2 -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 2 · Clarity — Int. kitchen, then the far future</div>
+    <span class="tc">1:25 – 2:30 &nbsp;·&nbsp; 65 sec &nbsp;·&nbsp; was 2:35 of screen time</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">Moe eats. Labels bloom over the table — three, fast, then gone:<br>
+    <span style="font-family:ui-monospace,monospace;color:var(--hud);font-size:13.5px">SOFT DRINK → METABOLIC POISON / LIVER STRESS<br>FRIED CHICKEN → OXIDISED FAT / CELLULAR DAMAGE<br>BURGER → ARTERIAL PLAQUE / <b>BLOCKED</b></span><br>
+    <em>(the typo dies here)</em></p>
+
+    <div class="line"><span class="id">2.01</span><span><span class="who moe">Moe</span><span class="paren">(quietly, to himself)</span><span class="say">Show me my future. If I keep living like this. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">2.02</span><span><span class="who lens">Lens</span><span class="say">The near future opens as doors. The far future, as portals. <span class="keep">Kept</span></span></span></div>
+
+    <p class="action">A portal opens in the middle of the kitchen. He walks into it.</p>
+    <p class="action"><b>INT. DECAYED APARTMENT — THE FAR FUTURE.</b> The same face, forty years on: heavier, alone, tangled in charging cables, screens where the windows should be. Nobody else in frame. A phone rings somewhere and no one answers it.</p>
+
+    <div class="line"><span class="id">2.03</span><span><span class="who lens">Lens</span><span class="say">Life expectancy: reduced by eleven years. Social contact: none logged in nine months. <span class="keep new">New</span></span></span></div>
+
+    <p class="action">Moe stumbles back into his own kitchen, breathing hard.</p>
+
+    <div class="line"><span class="id">2.04</span><span><span class="who lens">Lens</span><span class="say">Distress detected. Emotional suppression available. <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">2.05</span><span><span class="who moe">Moe</span><span class="say">…Do it. <span class="keep new">New</span></span></span></div>
+
+    <p class="action">The world goes <b>flat</b>. Colour drops a step. The sound dies — no room tone, no breath, nothing. His face empties. Three full seconds of nothing. He puts a hand on his own chest and finds nothing there.</p>
+
+    <div class="line"><span class="id">2.06</span><span><span class="who moe">Moe</span><span class="paren">(frightened)</span><span class="say">Stop. Give it back. <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">2.07</span><span><span class="who lens">Lens</span><span class="say">Restored. <span class="keep new">New</span></span></span></div>
+
+    <p class="action">Sound rushes back in like a man surfacing. The FATHER is in the doorway. He watched the whole thing.</p>
+
+    <div class="line"><span class="id">2.08</span><span><span class="who moe">Moe</span><span class="say">Why now? Why give me these now? <span class="keep new">New</span></span></span></div>
+
+    <p class="action">The father hesitates. He does not answer that question.</p>
+
+    <div class="line"><span class="id">2.09</span><span><span class="who father">Father</span><span class="say">Because the truth, even when it hurts, is the only thing that can save you. And I won't always be here to guide you. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">2.10</span><span><span class="who father">Father</span><span class="say">Go to the market. Bring honey. <span class="keep">Kept</span></span></span></div>
+  </div>
+  <div class="why"><b>Why:</b> this is the engine of the entire film. He <b>tastes the override once</b> and hates it — so when the lens offers to take his grief away in the last minute, the audience already knows exactly what he'd be giving up. Without this beat the ending is a nice gesture; with it, it's the point. The spinning clock (15 sec) and 20 sec of static food labels are gone; the bad future is defined by <em>isolation</em>, not just weight, so the horror lands and the fat-shaming reading doesn't.</div>
+</div>
+
+<!-- ACT 3A -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 3a · The road — Ext. city road — day</div>
+    <span class="tc">2:30 – 3:00 &nbsp;·&nbsp; 30 sec &nbsp;·&nbsp; was 66 sec</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">Motorcycle. Engine, wind, music bleeding from his helmet.</p>
+    <div class="line"><span class="id">3.01</span><span><span class="who moe">Moe</span><span class="say">Music's too loud. Lower it — in my head. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">3.02</span><span><span class="who lens">Lens</span><span class="say">Volume reduced. Your heart rate is elevated. I can suppress the anger — or you can handle it. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">3.03</span><span><span class="who moe">Moe</span><span class="say">I'll handle it. <span class="keep">Kept</span></span></span></div>
+    <p class="action"><em>Remember these three words. They are the last thing he says in the film.</em></p>
+    <p class="action">A plastic bottle rolls into the lane ahead. He passes it. Slows. Looks back.</p>
+    <div class="line"><span class="id">3.04</span><span><span class="who moe">Moe</span><span class="say">Show me the consequence of leaving it. <span class="keep">Kept</span></span></span></div>
+    <p class="action">Doors of light open down the road, one after another: a rider swerving — the bottle turning in a storm drain — water climbing a kerb — a flooded street, a child's shoe floating.</p>
+    <div class="line"><span class="id">3.05</span><span><span class="who lens">Lens</span><span class="say">Every small action creates a future echo. <span class="keep">Kept</span></span></span></div>
+    <p class="action">He walks back, picks it up, drops it in a bin.</p>
+    <div class="line"><span class="id">3.06</span><span><span class="who lens">Lens</span><span class="say">Good deed registered. Timer reset. <span class="keep">Kept</span></span></span></div>
+  </div>
+  <div class="why"><b>Why:</b> your best setpiece, kept whole — only the wandering city B-roll goes (it's also where the backgrounds melt at 3:36–3:39 and the mirror face changes). Three beats, thirty seconds, out.</div>
+</div>
+
+<!-- ACT 3B -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 3b · The market — Int. covered market — day</div>
+    <span class="tc">3:00 – 3:20 &nbsp;·&nbsp; 20 sec &nbsp;·&nbsp; was 33 sec, and rewritten</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">A stall of honey jars, lit from behind. THE HONEY SELLER — friendly, practised, ordinary.</p>
+    <div class="line"><span class="id">3.07</span><span><span class="who other">Honey seller</span><span class="say">This one? Purest in the city. From my own hives. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">3.08</span><span><span class="who lens">Lens</span><span class="say">Micro-expression mismatch. Deception probability: seventy-eight percent. <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">3.09</span><span><span class="who moe">Moe</span><span class="say">Do you <em>know</em> that? <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">3.10</span><span><span class="who lens">Lens</span><span class="say">No. It is an inference. <span class="keep new">New</span></span></span></div>
+    <p class="action">Moe looks at the man — properly, as a man. He sets the jar down gently.</p>
+    <div class="line"><span class="id">3.11</span><span><span class="who moe">Moe</span><span class="say">I'll take the small one from the back. Thank you. <span class="keep new">New</span></span></span></div>
+    <p class="action">He pays and leaves. No speech. No lesson.</p>
+  </div>
+  <div class="why"><b>Why:</b> the old version had the lens declare "fake smile, misleading claim, diluted product" as fact, then cut to an "authentic" old woman for contrast — which quietly argues that algorithmic suspicion <em>is</em> truth, and codes one trader as the liar. Now the machine admits it's guessing, and Moe stays courteous. Cutting "some shorten your life fast with violence, others slowly with lies" also removes the film's only preachy line. This is the single change that most improves how the film reads to a festival jury.</div>
+</div>
+
+<!-- ACT 3C -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 3c · The date — Int. restaurant — night</div>
+    <span class="tc">3:20 – 3:45 &nbsp;·&nbsp; 25 sec &nbsp;·&nbsp; was 70 sec</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">Candles. LAYLA across the table. The building timelapse and the phone call are gone — we start already here.</p>
+    <div class="line"><span class="id">3.12</span><span><span class="who layla">Layla</span><span class="say">The couple behind you. First time meeting face to face. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">3.13</span><span><span class="who moe">Moe</span><span class="say">How do you know? <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">3.14</span><span><span class="who layla">Layla</span><span class="say">She's checking whether he matches his photos. <span class="paren">(beat)</span> Imagine one of them used filters and the other didn't recognise them. <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">3.15</span><span><span class="who lens">Lens</span><span class="say">I can reshape perception entirely. Shall I demonstrate? <span class="keep">Kept</span></span></span></div>
+    <p class="action">A beauty filter slides over Layla's face — smoother, symmetrical, generic. Someone else.</p>
+    <div class="line"><span class="id">3.16</span><span><span class="who moe">Moe</span><span class="say">…Beautiful. But not her. <span class="keep">Kept</span></span></span></div>
+    <p class="action">The filter drops. Then, fast and playful, the lens throws her laughing face through two worlds — a dinosaur jungle, then claymation — and pulls back. <em>Two, not four.</em></p>
+    <div class="line"><span class="id">3.17</span><span><span class="who lens">Lens</span><span class="say">I can also simulate conversations with personally relevant individuals. Living, or— <span class="keep">Kept</span></span></span></div>
+    <div class="line"><span class="id">3.18</span><span><span class="who moe">Moe</span><span class="say">No. <span class="keep new">New</span></span></span></div>
+    <p class="action">Layla has been watching his eyes drift the whole time.</p>
+    <div class="line"><span class="id">3.19</span><span><span class="who layla">Layla</span><span class="say">Are you even here? <span class="keep new">New</span></span></span></div>
+    <p class="action">Moe takes the lenses out and sets the case on the table between them.</p>
+    <div class="line"><span class="id">3.20</span><span><span class="who moe">Moe</span><span class="say">I'm here now. <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">3.21</span><span><span class="who layla">Layla</span><span class="paren">(taking his hand, teasing)</span><span class="say">Good. Our kids won't need filters anyway — their <em>mother</em> is extremely good looking. <span class="keep new">New</span></span></span></div>
+    <p class="action">He laughs. Real, unfiltered, too loud for the restaurant.</p>
+  </div>
+  <div class="why"><b>Why:</b> your joke survives — it's hers now, which turns her from a laughing reward into a person in one line. And 3.17 is the loaded gun: the lens says out loud that it can simulate <em>personally relevant individuals</em>. It fires in Act 5. Note he says no here for a small reason, and no again at the grave for the largest one.</div>
+</div>
+
+<!-- ACT 4 -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 4 · Life — montage</div>
+    <span class="tc">3:45 – 4:20 &nbsp;·&nbsp; 35 sec &nbsp;·&nbsp; score carries it, three lines total</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">— The proposal, in the park. The lens case is in his pocket, not on his eyes.</p>
+    <p class="action">— The wedding. The FATHER dances one slow song with them, then sits down early, out of breath. Layla notices. Moe doesn't. <em>This shot is why the grave works.</em></p>
+    <p class="action">— Boxes in an empty flat. Rain on a window.</p>
+    <p class="action">— A hospital room: GHENA, minutes old.</p>
+    <p class="action">— Night. Moe asleep on the couch, laptop open on the table. Toddler Ghena on the rug, small hands on his keyboard. <em>No subtitle. The image says it.</em></p>
+    <p class="action" style="font-family:ui-monospace,monospace;letter-spacing:.12em;color:var(--hud)">4 YEARS LATER <span class="paren" style="font-family:inherit;letter-spacing:0">— in the HUD typeface, not the old serif card</span></p>
+    <p class="action">— Morning. GHENA (4, curly hair) at the laptop, actually typing, tongue between her teeth. Moe beside her with coffee.</p>
+    <div class="line"><span class="id">4.01</span><span><span class="who ghena">Ghena</span><span class="say">Daddy. It's broken again. <span class="keep new">New</span></span></span></div>
+    <div class="line"><span class="id">4.02</span><span><span class="who moe">Moe</span><span class="say">Then fix it. <span class="keep new">New</span></span></span></div>
+    <p class="action">LAYLA in the doorway — visibly pregnant, car keys in her hand.</p>
+    <div class="line"><span class="id">4.03</span><span><span class="who layla">Layla</span><span class="say">Come on. We're going to see Grandpa. <span class="keep">Kept</span></span></span></div>
+  </div>
+  <div class="why"><b>Why:</b> the father ages on screen exactly once, and it's enough. The legacy beat plays as an image instead of a subtitle joke. "Then fix it" is the father's whole philosophy coming out of Moe's mouth without anyone pointing at it.</div>
+</div>
+
+<!-- ACT 5 -->
+<div class="scene">
+  <div class="scene-head">
+    <div class="slug">Act 5 · The refusal — Ext. woodland cemetery — morning</div>
+    <span class="tc">4:20 – 4:55 &nbsp;·&nbsp; 35 sec &nbsp;·&nbsp; the film's whole reason to exist</span>
+  </div>
+  <div class="scene-body">
+    <p class="action">The same light as the first frame of the film. We land back on the shot that opened it — and now we know where we are.</p>
+    <p class="action">The stone reads <b>BELOVED FATHER</b>. Moe kneels and sets the flowers down. A few steps back, GHENA holds LAYLA's hand.</p>
+    <div class="line"><span class="id">5.01</span><span><span class="who lens">Lens</span><span class="say">Grief detected. Suppression available. <span class="keep new">New</span></span></span></div>
+    <p class="action">Beat.</p>
+    <div class="line"><span class="id">5.02</span><span><span class="who lens">Lens</span><span class="say">I can simulate him, if you wish. His voice. His manner. I have enough of him. <span class="keep new">New</span></span></span></div>
+    <p class="action">The longest pause in the film. His jaw works. <em>He wants it.</em> We have to see that he wants it.</p>
+    <div class="line"><span class="id">5.03</span><span><span class="who moe">Moe</span><span class="say">No. I'll handle it. <span class="keep new">New</span></span></span></div>
+    <p class="action">He takes the lens case out of his jacket and sets it on the bouquet. Closed.</p>
+    <div class="line"><span class="id">5.04</span><span><span class="who moe">Moe</span><span class="paren">(quietly, to the stone)</span><span class="say">I just wish you could see who I became. <span class="keep">Kept</span></span></span></div>
+    <p class="action">Layla's hand on his shoulder. Ghena's hand slips into his.</p>
+    <div class="line"><span class="id">5.05</span><span><span class="who layla">Layla</span><span class="paren">(softly — optional, see decision 3)</span><span class="say">Lana's kicking. <span class="keep new">New</span></span></span></div>
+    <p class="action">Moe laughs once — wet, surprised, human. Hold on the three of them, and the bump.</p>
+    <p class="action">Wind. Birds. <b>No closing line.</b> Silence. Fade.</p>
+    <p class="action" style="font-family:ui-monospace,monospace;letter-spacing:.12em;color:var(--hud)">NEURAL STAIN &nbsp;— packshot</p>
+  </div>
+  <div class="why"><b>Why:</b> "I'm sure he knows" answered the question for the audience. Silence lets them answer it themselves, and it's the stronger choice by a distance. The refusal uses the same three words he used on the motorcycle — his father's lesson, now his own. The case on the grave means he no longer needs anything between himself and the truth. And the last image is the family growing past the loss, which is what the film has actually been about since the first frame.</div>
+</div>
+
+<h2 id="changes">04</h2>
+<div class="h2sub">What changed, against your 7:41</div>
+
+<div class="tablewrap">
+<table>
+<tr><th>Original</th><th>What happens now</th></tr>
+<tr><td class="t">0:00–0:05</td><td><b>Prison cold open — deleted.</b> Debunked legend told as fact, characters who never return, your most valuable 30 seconds. Replaced by the grave flash-forward.</td></tr>
+<tr><td class="t">0:06–1:20</td><td>Den scene 75s → 67s. The inaudible proposal line is re-recorded (the transcript literally hears "propose the whalers"). Scene now <b>ends held</b> on "only if you allow it". Timer gets a reason; "Old hardware" plants the death.</td></tr>
+<tr><td class="t">1:21–1:45</td><td>Stock glowing-brain VFX dropped. Activation is a HUD over the real room.</td></tr>
+<tr><td class="t">1:45–2:20</td><td>Food labels 35s → ~8s, three labels. <b>Typo fixed:</b> BLOCKEL → BLOCKED. The father's FATIGUE/STRESS labels move up into Act 1 where they mean something.</td></tr>
+<tr><td class="t">2:21–2:58</td><td>Spinning clock 15s → cut. The bad future is now <b>isolation and dependence</b> — same face, alone, cabled — not weight alone. Soul ID makes it recognisably him, which is what made the horror fail before.</td></tr>
+<tr><td class="t">2:58–3:00</td><td><b>New:</b> the suppression taste — "Do it" → flat, silent, empty → "Stop. Give it back." The most important addition in the rebuild.</td></tr>
+<tr><td class="t">3:00–3:20</td><td>Father's speech kept intact. One beat added: "Why now?" — and he doesn't answer.</td></tr>
+<tr><td class="t">3:21–4:27</td><td>Motorcycle 66s → 30s. Keeps music-lowering, "I'll handle it", and the bottle→rider→drain→flood chain. Wandering B-roll cut (also where the backgrounds melt).</td></tr>
+<tr><td class="t">4:30–5:03</td><td>Market reframed: probability, not accusation; "Do you know that?" / "It is an inference"; the ethnic-coded liar-vs-authentic-grandma contrast is gone; the preachy line is gone.</td></tr>
+<tr><td class="t">5:06–6:15</td><td>Date 70s → 25s. Timelapse and phone call cut. Two fantasy worlds, not four. Layla gets the joke, notices him drifting, and he removes the lenses.</td></tr>
+<tr><td class="t">6:18–6:45</td><td>Montage kept. The single subtitle is dropped. One shot of the father visibly aging is added at the wedding.</td></tr>
+<tr><td class="t">6:45–7:41</td><td><b>Ending rewritten.</b> Grief suppression offered and refused; case placed on the bouquet; "I'm sure he knows" cut in favour of silence. "4 Years Later" restyled to the HUD typeface.</td></tr>
+<tr><td class="t">Global</td><td>7:41 → ~4:55 · 1080p minimum · complete audio rebuild (score, sound design, clean voice takes — the current track is 32&nbsp;kbps) · Soul IDs for Moe, Father, Layla, Ghena · locked wardrobe and rooms · <b>Higgsfield watermark replaces the Neural Stain logo bug</b> (your logo lives in the end packshot, which is allowed).</td></tr>
+</table>
+</div>
+
+<h2 id="decisions">05</h2>
+<div class="h2sub">The five decisions — my answers are already written in above</div>
+<p class="muted small">The script above assumes all five. Flipping any one of them is a small rewrite, not a restart — just say the number.</p>
+
+<ol class="decisions">
+  <li><b>Five acts with the grave cold-open.</b> <span class="rec">assumed yes</span><br><span class="muted small">If you'd rather open in the den like the original, we keep everything else and lose the flash-forward — but then the ending has no promise to pay off, and the first ten seconds are two men talking on a couch.</span></li>
+  <li><b>The suppression-taste beat in Act 2.</b> <span class="rec">assumed yes</span><br><span class="muted small">This is the one I'd fight for. Without it, the refusal at the grave is a nice moment. With it, it's the film.</span></li>
+  <li><b>Lana as the pregnancy only, plus the optional "Lana's kicking" line.</b> <span class="rec">assumed yes</span><br><span class="muted small">If you want her shown as a child, I'll write it — it costs a fifth consistent character (the hardest thing AI generation does) and flattens the ending into a family outro.</span></li>
+  <li><b>"Old hardware" as the father's deflection.</b> <span class="rec">assumed yes</span><br><span class="muted small">Alternative if you want it quieter: he just closes his collar over the labels and says nothing.</span></li>
+  <li><b>Title stays <em>Neural Stain</em>.</b> <span class="rec">assumed yes</span><br><span class="muted small">Logo moves off every frame and into the end packshot, which the rules allow.</span></li>
+</ol>
+
+<h2 id="plan">06</h2>
+<div class="h2sub">How we actually build it</div>
+
+<div class="card go">
+  <h4>The iron rule</h4>
+  <p class="small" style="margin:0">Generation happens through the <b>browser, on your unlimited web plan only</b> — the same way we did the Mom video. The CLI, the API and the new ChatGPT/Claude plugin all bill credits per generation even when Unlimited is on (Higgsfield's own help page: <em>"Unlimited access applies only on higgsfield.ai"</em>). That's what burned 7,475 credits overnight. It does not happen again. <b>Nothing is generated until you approve this script.</b></p>
+</div>
+
+<h3>Order of work</h3>
+<ul>
+  <li><b>1 · Soul IDs first</b> — Moe, Father, Layla, Ghena. Four identities, trained and approved by you before a single shot. This is what fixes the face drift, and it's why the old cut's future-self horror didn't land.</li>
+  <li><b>2 · Shot list</b> — every shot with its written prompt, camera, length and audio, sent to you as one page before generation.</li>
+  <li><b>3 · Generate + QC</b> — I drive the browser, review every take frame by frame, and send you contact sheets to approve, exactly like the Mom video.</li>
+  <li><b>4 · Audio</b> — clean voice takes, score, and real sound design. The silence in Act 2 and the silence at the end only work if the rest of the track is built properly.</li>
+  <li><b>5 · Cinema Studio</b> — final assembly there, because the rules require it. Watermark and packshot on the way out.</li>
+  <li><b>6 · Public post</b> — from your account, before <b>3 Sep, 11:59 PM PT</b>. I'll draft the caption.</li>
+</ul>
+
+<h3>What I need from you, and only you</h3>
+<ul>
+  <li>GO / NO-GO, and any line numbers you want changed.</li>
+  <li>Soul ID approvals (4 faces).</li>
+  <li>Yes/no on takes from the contact sheets.</li>
+  <li>The final Cinema Studio clicks if browser automation hits a wall.</li>
+  <li>Posting from your own account.</li>
+</ul>
+
+<h2 id="original">07</h2>
+<div class="h2sub">Appendix — the original transcript, as recorded</div>
+<p class="muted small">Your 7:41 cut, timecoded from the audio. Kept here so you can compare any line above against what you actually shot.</p>
+<pre class="tx">[0:00] Prisoners, after being told they were being gassed with poison, died from the power of fear
+       alone, even though they were only breathing harmless air.
+[0:08] Dad, I'm going to propose to Layla.
+[0:12] Propose? You think you're ready for that?
+[0:16] I love her.
+[0:18] Love is easy, responsibility isn't. You can't even control what you eat.
+[0:22] I'd rather die ten years earlier happy than spend ten extra years eating broccoli and
+       practically living in the gym.
+[0:31] You think like a child. You're still living in my house, using my money, and you think
+       you're ready to build a family?
+[0:39] Here, you need clarity. Contacts.
+[0:44] My vision is fine.
+[0:46] These aren't for your eyesight, they're AI lenses. I've been building them for years.
+[0:51] What do they do?
+[0:54] They show you the consequences of your choices before you make them.
+[0:58] They read your thoughts, and when necessary, they override them.
+[1:03] Override? No, you mean they control what I see, what I feel?
+[1:09] Exactly. Only if you allow it.
+[1:18] I don't feel anything.
+[1:20] Don't speak. Just think the word. Activate.
+[1:23] Clarity mode activated.
+[1:28] A good deed is required every 24 hours, or the lenses will shut down permanently.
+[1:41] In your mind, tell it to show you what your eyes refuse to see.
+[1:48] AI, show me things as they really are.
+[2:04] Ask it for your future.
+[2:07] The close future appears as doors. The distant future appears as portals.
+[2:13] It appears like a one second thought, without blocking your real vision, or the world
+       around you.
+[2:20] Show me my distant future. If I keep living like this.
+[2:58] This is more than I expected. — Why now? — Because the truth, even when it hurts,
+       is the only thing that can save you. You need to speak clearly and I won't always be
+       here to guide you. Let the lenses guide you. Go to the market and bring honey.
+[3:26] Music beside me is too loud. Lower it a little in my head. — Volume reduced. I can tell
+       you're angry. True strength is mastering your reaction. Do you want me to suppress the
+       anger or will you handle it?
+[3:46] Show me the consequences of not picking it up. — The next rider may hit the bottle and
+       lose control. If the bottle reaches the drain, trash buildup can block the flow and cause
+       flooding during heavy rain. Every small action creates a future echo.
+[4:07] Unbelievable. How did it come to this? I'll handle it. — Decision acknowledged.
+[4:22] Good deed registered. 24-hour timer reset.
+[4:43] Is this the purest stuff? — Yes. Best honey in town. — Based on body language and tone,
+       fake smile detected. Misleading claim. Diluted product. Long-term health risk.
+[4:59] Unbelievable. Some shorten your life fast with violence. Others slowly with lies.
+[5:00] I'll pass. — I'm waiting for you downstairs.
+[5:32] The couple that walked in behind us looks like they're meeting face-to-face. First time.
+       Imagine if one of them used filters and the other didn't even recognize them. That would
+       be funny.
+[5:48] Our children won't need filters because their father is extremely good looking.
+[5:49] Filters can do far more than that. I can reshape your entire perception. — Show me.
+       Applying a beauty enhancement.
+[5:59] Beautiful, but not her. I'll provide other examples. I can also simulate conversations
+       with historical or personally relevant individuals.
+[6:07] Yeah, no, that feels good [fake]. I just want to talk to her. — Acknowledged.
+[6:52] Come on. — I'm still trying to fix the bug. — You'll fix it later. We have to go see
+       grandpa. Daddy is waiting for us.
+[7:35] Thank you. Yeah, I just wish he could see the person I became. — I'm sure he knows.</pre>
+
+<footer>
+  <p style="margin:0 0 6px"><b>Neural Stain</b> — festival rebuild working document. Written 14 Aug 2026. Nothing on this page has been generated; it is the plan we agree on before a single credit or hour is spent.</p>
+  <p style="margin:0"><a href="https://farshou5.github.io/">← Back to My Stuff</a></p>
+</footer>
+
+</div>
+</body>
+</html>
