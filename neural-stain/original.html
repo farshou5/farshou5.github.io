@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEURAL STAIN — The Original Cut, Watched</title>
+<meta name="description" content="The original 7:41 film, described scene by scene as watched — every shot, every line of dialogue cleaned up — and compared against the planning document it was made from.">
+<style>
+  :root{
+    --bg:#0c0d10; --panel:#14161b; --panel2:#191c22; --ink:#e9eaf0; --muted:#9aa0b0;
+    --line:#262a33; --accent:#6ee7a8; --accent-dim:#1b3328; --warn:#ffcb6b; --warn-dim:#332a12;
+    --bad:#ff7a7a; --bad-dim:#3a1c1c; --hud:#7fd7ff;
+  }
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 16px 80px;
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-wrap:break-word}
+  .wrap{max-width:760px;margin:0 auto}
+  header{padding:34px 0 6px}
+  .kicker{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent)}
+  h1{font-size:clamp(30px,8vw,46px);margin:10px 0 6px;letter-spacing:-.03em;line-height:1.05}
+  .sub{color:var(--muted);margin:0;font-size:15.5px}
+  .status{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+  .chip{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;
+    padding:8px 11px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:700}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);
+    margin:44px 0 4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  h2 + .h2sub{font-size:clamp(22px,5vw,28px);font-weight:700;letter-spacing:-.02em;margin:0 0 14px}
+  p{margin:0 0 12px}
+  .lede{font-size:17px;color:var(--ink)}
+  .muted{color:var(--muted)}
+  .small{font-size:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin:0 0 12px}
+  .card.go{border-color:#2c5c44;background:var(--accent-dim)}
+  .card.warn{border-color:#5c4a1c;background:var(--warn-dim)}
+  .card h4{margin:0 0 8px;font-size:15px;letter-spacing:-.01em}
+  ul{margin:0 0 12px;padding-left:20px}
+  li{margin-bottom:7px}
+  .scene{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:0;margin:0 0 16px;overflow:hidden}
+  .scene-head{background:var(--panel2);border-bottom:1px solid var(--line);padding:13px 16px}
+  .slug{font:700 13px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--hud)}
+  .tc{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);margin-top:6px;display:block}
+  .scene-body{padding:15px 16px 6px}
+  .action{color:#c6cad6;font-size:15.5px;margin:0 0 13px}
+  .action em{color:var(--muted);font-style:italic}
+  .line{display:grid;grid-template-columns:52px 1fr;gap:10px;margin:0 0 13px;align-items:start}
+  .id{font:600 11.5px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#5f6675;padding-top:2px;user-select:all}
+  .who{font:800 12.5px/1.6 -apple-system,sans-serif;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent);display:block}
+  .who.lens{color:var(--hud)}
+  .who.moe{color:#ffd08a}
+  .who.father{color:#c3a6ff}
+  .who.layla{color:#ff9ec4}
+  .who.ghena{color:#8ee6d0}
+  .who.other{color:#9aa0b0}
+  .say{font-size:16.5px;color:var(--ink);margin-top:1px}
+  .paren{color:var(--muted);font-size:14px;font-style:italic}
+  .orig{display:block;font-size:13px;color:#6f7686;margin-top:3px}
+  .orig b{color:#8b93a5}
+  .why{border-top:1px dashed var(--line);margin:4px 0 0;padding:12px 16px 14px;background:#111318;
+    font-size:14.5px;color:var(--muted)}
+  .why b{color:var(--ink)}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+  footer a{color:var(--accent)}
+  a.back{color:var(--muted);text-decoration:none;font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="back" href="./">← UNCOUNTED — the festival decision</a>
+  <div class="kicker" style="margin-top:14px">Neural Stain · the original cut, watched</div>
+  <h1>Your 7:41, as I see it</h1>
+  <p class="sub">I pulled the film off your phone and went through it shot by shot. This page is the whole
+  video in words — every scene as it actually plays, every line of dialogue with the grammar fixed — and,
+  under each scene, what changed between the document you planned it from and the film you actually made.</p>
+  <div class="status">
+    <span class="chip"><b>7:41</b> · 1024×576 · 24fps</span>
+    <span class="chip">saved to phone <b>Aug 9, 2026</b></span>
+    <span class="chip"><b>11 scenes</b> · 5 speaking characters + the machine</span>
+    <span class="chip warn" style="border-color:#5c4a1c;background:var(--warn-dim);color:var(--warn)">made in Veo — ineligible for the festival, by design of the rules</span>
+  </div>
+</header>
+
+<div class="card" style="margin-top:18px">
+  <h4>How to read this page</h4>
+  <p style="margin-bottom:0">Timecodes are from the file itself. <b>WHAT I SEE</b> is the frame-by-frame
+  description. Dialogue is written the way it should read — cleaned English — and where the fix is more
+  than a comma, the original wording sits under the line in small grey. The <b>vs. your document</b> notes
+  compare the finished film against the planning doc you sent me (the Google Doc), because the gaps between
+  the two turned out to be the most interesting thing on this page.</p>
+</div>
+
+<!-- SCENE 1 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">1 · The prison legend · cold open</div>
+  <span class="tc">0:00 – 0:08</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> A grey concrete cell under two fluorescent tubes. Four men in
+    prison fatigues — one seated on a cot, one at a steel table, two standing. A cloud of white gas pours
+    from the ceiling vent between them; the standing man presses a hand to his face. It is staged like a
+    documentary reconstruction: flat light, wide lens, nobody looks at camera.</p>
+    <div class="line"><div class="id">0:00</div><div><span class="who other">Narrator</span>
+      <div class="say">"Prisoners who were told they were being gassed with poison died from the power of
+      fear alone — even though they were only breathing harmless air."
+      <span class="orig"><b>as spoken:</b> "Prisoners, after being told they were being gassed with poison,
+      died from the power of fear alone, even though they were only breathing harmless air."</span></div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc credits this to a NEWS REPORTER; the film plays it as
+  plain narration over the cell. These four men never appear again — which is why every later analysis,
+  mine and the other two AIs', voted this opening out of the rebuild.</div>
+</div>
+
+<!-- SCENE 2 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">2 · The den — the argument and the gift</div>
+  <span class="tc">0:08 – 1:20</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> A warm wood-panelled den. Moe — early thirties, full brown beard,
+    olive t-shirt — on a grey couch with a burger in his hand; his father — late sixties, silver hair, grey
+    stubble, navy chore jacket over a grey tee — beside him with the TV remote. On the coffee table: a soda
+    can, a donut on one plate, a burger on another. The whole argument plays in this one room, mostly in a
+    flat eye-level two-shot, cutting closer as it sharpens. At the gift, the father produces the small
+    steel case; there is a ghosted double-exposure moment as Moe reaches for the food and his hand passes
+    through it — the first hint of the lenses' overlay world.</p>
+    <div class="line"><div class="id">0:08</div><div><span class="who moe">Moe</span>
+      <div class="say">"Dad… I'm going to propose to Layla."</div></div></div>
+    <div class="line"><div class="id">0:12</div><div><span class="who father">Father</span>
+      <div class="say">"Propose? You think you're ready for that?"</div></div></div>
+    <div class="line"><div class="id">0:16</div><div><span class="who moe">Moe</span>
+      <div class="say">"I love her."</div></div></div>
+    <div class="line"><div class="id">0:18</div><div><span class="who father">Father</span>
+      <div class="say">"Love is easy. Responsibility isn't. You can't even control what you eat."</div></div></div>
+    <div class="line"><div class="id">0:22</div><div><span class="who moe">Moe</span>
+      <div class="say">"I'd rather die ten years earlier, happy, than spend ten extra years eating broccoli
+      and practically living in the gym."</div></div></div>
+    <div class="line"><div class="id">0:31</div><div><span class="who father">Father</span>
+      <div class="say">"You think like a child. You're still living in my house, spending my money — and you
+      think you're ready to build a family?"
+      <span class="orig"><b>as spoken:</b> "…still living in my house, using my money, and you think you're
+      ready to build a family?"</span></div></div></div>
+    <div class="line"><div class="id">0:39</div><div><span class="who father">Father</span>
+      <div class="say">"Here. You need clarity." <span class="paren">(the steel case)</span>
+      <span class="orig"><b>as spoken:</b> "Here, you need clarity. Contacts."</span></div></div></div>
+    <div class="line"><div class="id">0:44</div><div><span class="who moe">Moe</span>
+      <div class="say">"Contacts? My vision is fine."</div></div></div>
+    <div class="line"><div class="id">0:46</div><div><span class="who father">Father</span>
+      <div class="say">"They're not for your eyesight. They're AI lenses. I've been building them for years."</div></div></div>
+    <div class="line"><div class="id">0:51</div><div><span class="who moe">Moe</span>
+      <div class="say">"What do they do?"</div></div></div>
+    <div class="line"><div class="id">0:54</div><div><span class="who father">Father</span>
+      <div class="say">"They show you the consequences of your choices — before you make them. They read
+      your thoughts. And when necessary… they override them."</div></div></div>
+    <div class="line"><div class="id">1:03</div><div><span class="who moe">Moe</span>
+      <div class="say">"Override? You mean they control what I see? What I feel?"</div></div></div>
+    <div class="line"><div class="id">1:09</div><div><span class="who father">Father</span>
+      <div class="say">"Exactly. Only if you allow it."</div></div></div>
+    <div class="line"><div class="id">1:20</div><div><span class="who father">Father</span>
+      <div class="say">"Don't speak. Just think the word: Activate."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> almost word for word — this is the scene the doc and the film
+  agree on most, and it is also the best-written scene in both. The doc has one extra father line the film
+  dropped ("You quit a diet in three days and you think you're ready for a marriage?") and one extra Moe
+  beat ("I don't feel anything") before Activate. Everything the three-AI rebuild kept — the proposal,
+  "Love is easy," "Only if you allow it" — comes from these seventy seconds.</div>
+</div>
+
+<!-- SCENE 3 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">3 · Activation</div>
+  <span class="tc">1:20 – 1:44</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> Moe touches his eye; close-up as he seats the lens. A hard cut to
+    a glowing blue neural network — a stock-style brain visual, the one shot in the film that looks like a
+    screensaver rather than the world. Then Moe stares straight into camera, pupils steady, as the machine
+    speaks its terms.</p>
+    <div class="line"><div class="id">1:23</div><div><span class="who lens">Lens</span>
+      <div class="say">"Clarity Mode activated."</div></div></div>
+    <div class="line"><div class="id">1:28</div><div><span class="who lens">Lens</span>
+      <div class="say">"One good deed is required every twenty-four hours — or the lenses shut down
+      permanently."
+      <span class="orig"><b>as spoken:</b> "A good deed is required every 24 hours, or the lenses will shut
+      down permanently."</span></div></div></div>
+    <div class="line"><div class="id">1:41</div><div><span class="who father">Father</span>
+      <div class="say">"In your mind — tell it to show you what your eyes refuse to see."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc's version of this beat is leaner ("Think the word…
+  Activate."). The 24-hour rule arriving as the machine's second sentence is identical in both — it was
+  always the best idea in the film, and it became the engine of the rebuild.</div>
+</div>
+
+<!-- SCENE 4 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">4 · Clarity — the labels, the clock, the portal</div>
+  <span class="tc">1:44 – 3:12</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> The den again, now through the lenses. The TV, the burger, the
+    donut, the soda — and glowing red labels resolve over the food: ARTERIAL PLAQUE · BLOCKED ARTERIES,
+    OXIDIZED FAT, METABOLIC POISON · LIVER; the soda can turns black with a skull on it. Then the father
+    himself gets labels, quiet and orange: FATIGUE: SEVERE · STRESS LEVEL: HIGH. He sits alone on the couch
+    in his navy jacket, looking at his son looking at him. A wall clock spins. A grey vortex opens — the
+    portal — and inside it: a heavier Moe, years on, alone on a worn-out couch in a peeling room, a single
+    lamp beside him; black veins crawl out of the couch and over him as he sinks. Back in the den, the
+    father delivers the reason for all of it.</p>
+    <div class="line"><div class="id">2:07</div><div><span class="who father">Father</span>
+      <div class="say">"The close future appears as doors. The distant future appears as portals."</div></div></div>
+    <div class="line"><div class="id">2:20</div><div><span class="who moe">Moe</span>
+      <div class="say">"Show me my distant future — if I keep living like this."</div></div></div>
+    <div class="line"><div class="id">2:58</div><div><span class="who moe">Moe</span>
+      <div class="say">"Why now?"</div></div></div>
+    <div class="line"><div class="id">3:00</div><div><span class="who father">Father</span>
+      <div class="say">"Because the truth — even when it hurts — is the only thing that can save you. I
+      won't always be here to guide you."</div></div></div>
+    <div class="line"><div class="id">3:10</div><div><span class="who father">Father</span>
+      <div class="say">"Go to the market and bring honey."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc stops at "I won't always be here to guide you" — the
+  honey errand was added in the making, as a bridge to the market scene. "I won't always be here" is the
+  film's real death flag, planted at exactly the 40% mark; the rebuild moved that whole idea to frame one.</div>
+</div>
+
+<!-- SCENE 5 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">5 · The road — the bottle and the echo</div>
+  <span class="tc">3:12 – 4:32</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> Your best sequence, and it's not close. Helmet POV from the
+    motorcycle: sunlit downtown avenue, a red light, a blue convertible pulled up on the right with its
+    driver's arm on the door. Moe's face sits in the round mirror, bottom of frame — the film's cleverest
+    composition, keeping him present through a whole scene with zero lip-sync. A plastic bottle arcs out of
+    the convertible and rolls to a stop in the lane. Glowing consequence-windows open over the road, edged
+    in cyan and violet: inside one, the drain choked with trash under rain; inside another, the same driver
+    trapped in his flooded car. A third window shows the rider far behind. Moe brakes, walks back — the
+    camera goes objective for the first time as he crosses the empty crosswalk — picks the bottle up, bins
+    it. The light turns green; he rides off, small in the wide frame.</p>
+    <div class="line"><div class="id">3:26</div><div><span class="who moe">Moe</span>
+      <div class="say">"The music's too loud. Lower it a little — in my head."
+      <span class="orig"><b>as spoken:</b> "Music is too loud. Lower it a little in my head."</span></div></div></div>
+    <div class="line"><div class="id">3:30</div><div><span class="who lens">Lens</span>
+      <div class="say">"Volume reduced. I can tell you're angry. Do you want me to suppress the anger — or
+      will you handle it?"</div></div></div>
+    <div class="line"><div class="id">3:46</div><div><span class="who moe">Moe</span>
+      <div class="say">"Show me the consequences of not picking it up."</div></div></div>
+    <div class="line"><div class="id">3:50</div><div><span class="who lens">Lens</span>
+      <div class="say">"The next rider may hit the bottle and lose control. If it reaches the drain, the
+      buildup can block the flow and flood the street in heavy rain. Every small action creates a future
+      echo."
+      <span class="orig"><b>as spoken:</b> "…trash buildup can block the flow and cause flooding during
+      heavy rain. Every small action creates a future echo."</span></div></div></div>
+    <div class="line"><div class="id">4:07</div><div><span class="who moe">Moe</span>
+      <div class="say">"I'll handle it."</div></div></div>
+    <div class="line"><div class="id">4:09</div><div><span class="who lens">Lens</span>
+      <div class="say">"Decision acknowledged."</div></div></div>
+    <div class="line"><div class="id">4:22</div><div><span class="who lens">Lens</span>
+      <div class="say">"Good deed registered. Twenty-four-hour timer reset."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc planned this much bigger — time freezing to a crawl,
+  a portal with the driver shouting "Damn this government!" in the flood, two labelled doors (IGNORE IT /
+  PICK IT UP), the second motorcyclist nearly crashing. The film wisely compressed all of it into silent
+  windows and one verbal warning. Note what survived into every later version: the bottle, the drain, the
+  flood, the anger the machine offers to suppress, and "I'll handle it" — the four words that eventually
+  became the hinge of UNCOUNTED.</div>
+</div>
+
+<!-- SCENE 6 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">6 · The market — the honey seller</div>
+  <span class="tc">4:32 – 5:04</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> A bright supermarket aisle; a wooden farm-stand table stacked with
+    LOCAL HONEY jars. The seller — lean, fortyish, navy henley, light-brown hair — stands behind it with a
+    salesman's smile that is a few degrees too wide. Moe, now in a dark long-sleeve (one of the film's four
+    wardrobes), lifts a jar.</p>
+    <div class="line"><div class="id">4:43</div><div><span class="who moe">Moe</span>
+      <div class="say">"Is this the purest stuff?"</div></div></div>
+    <div class="line"><div class="id">4:45</div><div><span class="who other">Honey seller</span>
+      <div class="say">"Yes — best honey in town."</div></div></div>
+    <div class="line"><div class="id">4:47</div><div><span class="who lens">Lens</span>
+      <div class="say">"Body language and tone: fake smile detected. Misleading claim. Diluted product."
+      <span class="orig"><b>as spoken:</b> "Based on body language and tone, fake smile detected. Misleading
+      claim. Diluted product."</span></div></div></div>
+    <div class="line"><div class="id">4:59</div><div><span class="who lens">Lens</span>
+      <div class="say">"Some shorten your life fast — with violence. Others slowly — with lies."
+      <span class="orig"><b>as spoken:</b> "Some shorten your life fast with violence. Others slowly with
+      lies." — your doc's fuller version: "Some take lives with guns. Others with lies… some with just their
+      words."</span></div></div></div>
+    <div class="line"><div class="id">5:02</div><div><span class="who moe">Moe</span>
+      <div class="say">"I'll pass."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc's version was an olive-oil seller with red warning
+  labels over his head; the film changed the product to honey and moved the verdict into the machine's
+  voice. The doc also had a whole second scene here — the job interview with holographic confidence cues
+  ("Why should we hire you?") — that was never shot; only its aftermath survives as the office desk in the
+  montage.</div>
+</div>
+
+<!-- SCENE 7 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">7 · Evening — the call</div>
+  <span class="tc">5:04 – 5:32</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> No dialogue. A residential tower at night under a sky full of
+    stars, windows lit. Moe below on the sidewalk, phone to his ear, pacing — shot from behind, cars
+    passing. Then the two of them, Moe in a dark shirt and Layla in a deep-red velvet dress, walking
+    hand in hand down a wet lamplit street and through the glass door of a small restaurant. It plays as:
+    he called her, and she said yes to dinner.</p>
+  </div>
+  <div class="why"><b>vs. your document:</b> not in the doc at all — pure connective tissue invented in the
+  edit, and honestly some of the film's most cinematic footage: night, rain-wet stone, warm windows.</div>
+</div>
+
+<!-- SCENE 8 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">8 · The restaurant — filters, and the first refusal</div>
+  <span class="tc">5:32 – 6:20</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> A brick-walled bistro, Layla across the table in burgundy,
+    laughing — the single warmest performance in the film. Much of it is lens-POV: Moe's own hands on the
+    table, her opposite. When the machine offers to "reshape perception," the demo is spectacular and
+    strange: the restaurant swaps around her — first a prehistoric jungle with dinosaurs behind her
+    shoulder, then a candlelit Victorian dining room where she laughs in period dress, then a grim stone
+    cell where the same laugh turns eerie — then back to brick and lamplight. The historical-simulation
+    offer is visualized as the Victorian version of her.</p>
+    <div class="line"><div class="id">5:32</div><div><span class="who moe">Moe</span>
+      <div class="say">"The couple that walked in behind us — I think they're meeting face-to-face for the
+      first time."
+      <span class="orig"><b>as spoken:</b> "The couple that walked in behind us looks like they're meeting
+      face-to-face. First time."</span></div></div></div>
+    <div class="line"><div class="id">5:48</div><div><span class="who moe">Moe</span>
+      <div class="say">"Our children won't need filters — because their father is extremely good-looking."</div></div></div>
+    <div class="line"><div class="id">5:49</div><div><span class="who lens">Lens</span>
+      <div class="say">"I can reshape your entire perception."</div></div></div>
+    <div class="line"><div class="id">5:52</div><div><span class="who moe">Moe</span>
+      <div class="say"><span class="paren">(in his mind)</span> "Show me."</div></div></div>
+    <div class="line"><div class="id">5:53</div><div><span class="who lens">Lens</span>
+      <div class="say">"Applying a beauty enhancement."</div></div></div>
+    <div class="line"><div class="id">5:59</div><div><span class="who moe">Moe</span>
+      <div class="say">"Beautiful… but not her."</div></div></div>
+    <div class="line"><div class="id">6:02</div><div><span class="who lens">Lens</span>
+      <div class="say">"I can also simulate conversations with historical or personally relevant
+      individuals."</div></div></div>
+    <div class="line"><div class="id">6:07</div><div><span class="who moe">Moe</span>
+      <div class="say">"Yeah… no. I just want to talk to her."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc gave Layla the filtered-photos observation; in the
+  film Moe carries the scene and she reacts. The doc also has two beats the film cut: "With anyone?" /
+  "If sufficient data exists." — and your end-notes spell the idea out: <em>"we could tell AI, if I could
+  talk to anyone from the past, based on what we know about that person, you can replicate him and answer
+  as if you were him."</em> Read that again. In your own planning document, sitting under the restaurant
+  scene, is the exact machine that UNCOUNTED is about — offered, and refused with "I just want to talk to
+  her." The rebuild didn't import a foreign idea into your film. It promoted one you already wrote.</div>
+</div>
+
+<!-- SCENE 9 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">9 · The life montage</div>
+  <span class="tc">6:20 – 6:52</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> No dialogue, one caption. Moe at an office desk in a navy shirt,
+    typing — steady, employed, changed. The proposal: golden-hour garden, one knee, ring box, Layla's hands
+    to her mouth. The two of them carrying boxes into a bare sunlit apartment. A hospital room — Layla in
+    a blue gown, Moe at the bedside holding her hand. Then a laptop with code on the screen and a baby in
+    a pink hoodie reaching over the keyboard, captioned: <b>"FIXING MY FATHER'S CODE WHILE HE'S
+    SLEEPING."</b> — followed by the same girl as a curly-haired toddler, climbing at the same laptop.</p>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc's montage had a wedding hall and "father watching
+  proudly" — neither is in the finished film, which is striking: the father silently disappears from the
+  story here, with no goodbye shot, and the film never marks his death at all; the audience has to infer it
+  at the cemetery. Also: the two laptop shots of the little girl are real phone footage of a real child —
+  the one part of this film that can never be reused under the festival's likeness rules.</div>
+</div>
+
+<!-- SCENE 10 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">10 · "We have to go see Grandpa"</div>
+  <span class="tc">6:52 – 7:10</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> The bug exchange plays over the toddler at the laptop, then a
+    flower-market arcade in bright daylight: Layla — in a grey knit, visibly pregnant — walking with Ghena,
+    small and curly-haired in a pink cardigan, past buckets of red and white flowers. Ghena waves at the
+    stalls. Then a sunlit woodland park: Moe kneels, arms open; Ghena runs into them; Layla stands behind
+    with a bouquet.</p>
+    <div class="line"><div class="id">6:52</div><div><span class="who layla">Layla</span>
+      <div class="say">"Come on."</div></div></div>
+    <div class="line"><div class="id">6:54</div><div><span class="who ghena">Ghena</span>
+      <div class="say">"I'm still trying to fix the bug."</div></div></div>
+    <div class="line"><div class="id">6:57</div><div><span class="who layla">Layla</span>
+      <div class="say">"You'll fix it later. We have to go see Grandpa."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc stages this as a car parking at the cemetery gate with
+  Moe saying "Come on… we're going to visit Grandpa." The film gives the line to Layla and folds it into
+  the bug joke — a better choice: the code-fixing granddaughter is the film's whole idea of inheritance,
+  in one caption and one line.</div>
+</div>
+
+<!-- SCENE 11 -->
+<div class="scene">
+  <div class="scene-head"><div class="slug">11 · The grave</div>
+  <span class="tc">7:10 – 7:41</span></div>
+  <div class="scene-body">
+    <p class="action"><b>WHAT I SEE.</b> A woodland cemetery, morning light through pines. Moe kneels —
+    close on his face, looking down. The bouquet, white roses and pale blue flowers, lies on the pine
+    needles. A hand enters frame and sets the small lens case down beside the flowers, closed. Only then
+    does the film show the stone: <b>Beloved Father</b>, the bouquet at its base, the case beside it. The
+    last exchange plays over the three of them — Moe, pregnant Layla, Ghena between them holding both their
+    hands — walking away down the path, backs to camera, into the trees. Cut to the Neural Stain logo.</p>
+    <div class="line"><div class="id">7:35</div><div><span class="who moe">Moe</span>
+      <div class="say">"I just wish he could see the person I became."</div></div></div>
+    <div class="line"><div class="id">7:38</div><div><span class="who layla">Layla</span>
+      <div class="say">"I'm sure he knows."</div></div></div>
+  </div>
+  <div class="why"><b>vs. your document:</b> the doc wrote a whole graveside speech the film never says out
+  loud: <em>"Dad… you taught me how to see the truth. But the greatest truth… was learning to see without
+  these."</em> — spoken while placing the lens case on the grave. In the finished film the case placement
+  survives, silent, but the line is gone; and the doc's Ghena exchange ("Dad… are you okay?" / "Yes, my
+  love. I am now.") became Layla's "I'm sure he knows." Keep the doc's sentence somewhere safe. It is the
+  thesis of UNCOUNTED, written by you, before any of us three ever saw the film.</div>
+</div>
+
+<!-- CLOSING -->
+<h2>after the credits</h2>
+<div class="h2sub">What your document knew before any of us</div>
+
+<div class="card go">
+  <h4>Two ideas were already yours</h4>
+  <p>The whole three-AI rebuild of this film stands on two ideas — and both are in your planning document,
+  not ours. <b>One:</b> the grave speech about learning to see <em>without</em> the lenses, ending with the
+  case placed on the grave — that is UNCOUNTED's climax, almost beat for beat. <b>Two:</b> the note about
+  the AI replicating someone from the past so you could talk to them — that is UNCOUNTED's premise. The
+  film you shot cut the first and gave the second eight seconds at a dinner table. The rebuild just took
+  your two buried ideas and built the house on them.</p>
+  <p style="margin-bottom:0">Everything else on this page — the lines worth keeping, what each scene does,
+  which shots are genuinely cinematic (the mirror on the motorcycle, the wet street, the walk away from
+  the grave) — is already folded into the <a href="./" style="color:var(--accent)">UNCOUNTED decision
+  page</a>, block by block, in English and Arabic.</p>
+</div>
+
+<footer>
+  <p>NEURAL STAIN — the original 7:41, watched frame by frame on 17 Aug 2026 and written up as seen.
+  Dialogue cleaned for reading; original wording preserved under any line that changed. Source: the film
+  itself (phone copy, Aug 9) and the planning document.</p>
+  <p style="margin-bottom:0"><a href="./">← UNCOUNTED — the festival decision</a> ·
+  <a href="https://farshou5.github.io">My Stuff</a></p>
+</footer>
+
+</div>
+</body>
+</html>
