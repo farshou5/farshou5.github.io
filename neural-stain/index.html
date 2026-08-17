@@ -253,12 +253,15 @@
 </div>
 
 <div class="card">
-  <h4>3 · Screening kills you before the good part</h4>
-  <p style="margin-bottom:0">Three stages: Screening → Shortlist → Jury. <b>Most entries die at
-  Screening</b>, and a previous Higgsfield contest drew 8,752 of them. The old structure spends its first
-  three minutes explaining how a device works before revealing what the film is about. Codex:
-  <q>Saving the father simulation for minute three means hiding the film's strongest dramatic question
-  until after many screeners will have rejected it.</q></p>
+  <h4>3 · The shortlist kills you before the good part</h4>
+  <p style="margin-bottom:0">Three stages: Screening → Shortlist → Jury. <span class="small muted">(Corrected
+  17 Aug against the official rules: Screening is eligibility-only; the creative cut is the shortlist,
+  compiled by Higgsfield's team from thousands of eligible films.)</span> A previous Higgsfield contest drew
+  8,752 entries. The old structure spends its first three minutes explaining how a device works before
+  revealing what the film is about. Codex: <q>Saving the father simulation for minute three means hiding
+  the film's strongest dramatic question until after many screeners will have rejected it.</q> The logic
+  is unchanged — a shortlist reviewer working through thousands of films is exactly the person the cold
+  open exists for.</p>
 </div>
 
 <div class="card">
@@ -523,9 +526,10 @@ every <b>JOB</b> is a separate generation — never ask one job to change locati
 <div class="card">
   <h4>The five rules of generation (Codex + Kimi audited this plan on 17 Aug; these came out of it)</h4>
   <ul style="margin-bottom:0">
-    <li><b>Machine text is never generated pixels.</b> Every HUD line, timer and percentage is an in-tool
-    overlay on a clean plate. Generated text garbles and burns retries; overlays are deterministic and
-    always legible. Both auditors called this the plan's #1 risk.</li>
+    <li><b>Machine text is never generated pixels.</b> Every HUD line, timer and percentage is a text
+    overlay added in DaVinci Resolve — explicitly allowed by the official rules (confirmed 17 Aug) — on a
+    clean plate. Generated text garbles and burns retries; overlays are deterministic and always legible.
+    Both auditors called this the plan's #1 risk.</li>
     <li><b>One location, one camera side, per job.</b> A "single shot" that is secretly a montage is the
     schedule killer: one failed hand forces a full regeneration.</li>
     <li><b>Line numbers below are the same numbers as the script above.</b> "6.03" here is 6.03 there.</li>
@@ -535,6 +539,28 @@ every <b>JOB</b> is a separate generation — never ask one job to change locati
     <li><b>Paste the identity card into every prompt.</b> One line per character: Soul ID + wardrobe +
     stubble state. Unshaven vigil-Moe is the same Soul with a stubble modifier, never a new identity.
     The original film's drift (four wardrobes on one man) is the proof this matters.</li>
+  </ul>
+</div>
+
+<div class="card warn">
+  <h4>Second audit, 17 Aug — after reading the official rules (Codex xhigh + Kimi k3 max)</h4>
+  <ul style="margin-bottom:0">
+    <li><b>Audio first, video second.</b> All three voices, the score, and every ambience layer (wind,
+    water, room tone — those must be AI too) are generated with external AI tools, locked, and uploaded
+    to the project <em>before</em> the first video job. Then a frame-accurate Resolve animatic on the
+    locked audio — and the lip-sync heroes are generated against final sound, not scratch.</li>
+    <li><b>The blocks below are generation units, not cutting units.</b> Resolve may cut on the best
+    frames wherever they are; and a "22-second job" may become three shorter single-action clips if that
+    is safer. The 30-second grid organizes generation; it no longer constrains the edit.</li>
+    <li><b>Faces: keep the descriptions, never the pixels.</b> The old 7:41 frames are not references —
+    not for Soul IDs, not for compositing (outside-platform imagery = disqualification). The three adults
+    are designed fresh inside the festival project, fictional by construction, and verified against a
+    harder rule: they must not resemble the real family either. Ghena is designed from scratch, distinct
+    from any real child — matching the real one is the violation, not the goal.</li>
+    <li><b>De-brand and de-sanctify.</b> No logos on the motorcycle, bottle or clothing; the grave is a
+    plain secular stone — its inscription is Resolve typography, never generated text.</li>
+    <li><b>Runtime floor is 3:00, hard.</b> The timeline never dips below 3:05 at any point in the edit;
+    if a block dies, montage beats stretch — we never trim toward the cliff.</li>
   </ul>
 </div>
 
@@ -702,8 +728,8 @@ every <b>JOB</b> is a separate generation — never ask one job to change locati
     inserts — the case set down on the bouquet, closed; Layla's hand taking his to her belly; Ghena's hand
     slipping into the other; then the wide three-shot, mostly from behind, holding on the family and the
     bump while the laugh lands as sound. Layla's 6.05 is spoken soft, her face turned into his shoulder —
-    no sync. <em>Job C:</em> wind; water running somewhere; eight seconds, no score; the title as an
-    in-tool card, never generated.</p>
+    no sync. <em>Job C:</em> wind; water running somewhere; eight seconds, no score; the title as a
+    Resolve card, never generated.</p>
     <p class="action"><b>DIALOGUE.</b></p>
     <div class="line"><div class="id">6.02</div><div><span class="who father">Father</span>
       <div class="say"><span class="paren">(faint, from inside the case)</span> "Tell me what you did today."</div></div></div>
@@ -726,8 +752,8 @@ every <b>JOB</b> is a separate generation — never ask one job to change locati
   <h4>Generation order (not timeline order)</h4>
   <p style="margin-bottom:0">1) The three HERO shots — 1.09, 4.03, 6.03 — because they are the GO/NO-GO.
   2) B1 Job A + one workshop visit — they define the film's two looks. 3) The motorcycle and drain
-  material. 4) Everything else wordless. 5) Overlays, sound, title in-tool, last. If the heroes fail after
-  focused retries on 20 Aug, we stop before the wordless 80% is generated.</p>
+  material. 4) Everything else wordless. 5) Overlays, sound and title in Resolve, last. If the heroes fail
+  after focused retries on 20 Aug, we stop before the wordless 80% is generated.</p>
 </div>
 
 <!-- ============ 06 WHAT SURVIVES ============ -->
@@ -839,22 +865,33 @@ I merged all three positions into one script and sent it back for audit.</p>
 <h2 id="odds">08</h2>
 <div class="h2sub">The odds, without decoration</div>
 
+<div class="card warn">
+  <h4>Recomputed 17 Aug against the official rules — the numbers below replace the 15 Aug table</h4>
+  <p class="small" style="margin-bottom:0">Moe sent the full Official Rules; Codex (gpt-5.6-sol, xhigh) and
+  Kimi (k3, max thinking) both read all 249 lines and recomputed. The old "2.5–4% honorable mention" was
+  too generous: it treated Screening as a quality gate. In the real rules Stage 1 is eligibility only —
+  the creative cut is a <b>shortlist</b> compiled from thousands of eligible films, and all fourteen
+  prizes are drawn from that shortlist.</p>
+</div>
+
 <div class="tablewrap"><table>
-<tr><th>Version</th><th>Finished by 3 Sep</th><th>Survives Screening</th><th>Honorable mention ($10k)</th></tr>
-<tr><td class="t">UNCOUNTED</td><td>~85%</td><td>~55–65%</td><td><b>2.5–4%</b></td></tr>
-<tr><td class="t">The 4:55 rebuild</td><td>~45%</td><td>~20–40%</td><td>0.5–5%</td></tr>
-<tr><td class="t">The 7:41 cut as it is</td><td>—</td><td>ineligible</td><td>0%</td></tr>
-<tr><td class="t">A brand-new film</td><td>&lt;50%</td><td>—</td><td>&lt;0.5%</td></tr>
+<tr><th>Step</th><th>Codex</th><th>Kimi</th><th>Why</th></tr>
+<tr><td class="t">Eligible film exists by Sep 3</td><td>78%</td><td>80%</td><td>~15 generation jobs + retries fit 17 days of a one-job queue; residual risk is schedule slip or a compliance trip — all controllable</td></tr>
+<tr><td class="t">Makes the shortlist</td><td>5%</td><td>5%</td><td>assume ~4–6k eligible entries, a shortlist around a hundred films: ~2% base rate, and a story-first film with clean typography and pro sound is worth 2–3× base — not 10×</td></tr>
+<tr><td class="t">Wins any prize, if shortlisted</td><td>10%</td><td>15%</td><td>14 prizes against a ~100-film shortlist; Audience Choice discounted (paid-subscriber voting, no voter base)</td></tr>
+<tr><td class="t"><b>Any prize, overall</b></td><td><b>0.39%</b></td><td><b>0.6%</b></td><td><b>≈ 1 in 170 to 1 in 260 — call it 1 in 200.</b> Expected value ≈ $150, weighted almost entirely toward the $10k honorable mention</td></tr>
 </table></div>
 
-<p>Kimi started this at 6–10% and came down on its own: <q>I converge toward Codex; my 6–10% was
-overgenerous against 8,000+ entries for ten slots.</q> Codex holds at 2.5%. So the number is between two
-and four in a hundred, and that is the version I am giving you rather than the encouraging one.</p>
+<p class="small muted">Bookkeeping note, because this page is the record: Kimi's headline read "0.06%
+(1 in 1,700)" — an arithmetic slip; its own three components multiply to 0.6%. Corrected in the merge,
+and with that fix the two independent estimates agree.</p>
 
 <p><b>Whatever we do, the most likely outcome by far is that you win nothing.</b> Fourteen prizes exist in
-the entire world for this. What is actually inside your control is that the film exists and is good — and
-that part we can nearly guarantee, which is worth saying out loud, because it is the part you will still
-have in October.</p>
+the entire world for this, and at one in two hundred the expected value is around a hundred and fifty
+dollars against nineteen days of work. What is actually inside your control is that the film exists and
+is good — and that part we can nearly guarantee, which is worth saying out loud, because it is the part
+you will still have in October. Both auditors ended on the same sentence: he is making this film for the
+film.</p>
 
 <p class="muted">Top three is a lottery among hundreds of shortlisted films and cannot be engineered.
 Audience Choice is 1–2% and rewards reach, not craft — post it with the true story of your father and
@@ -872,29 +909,43 @@ treat it as a free ticket.</p>
 </div>
 
 <div class="card">
-  <h4>Rules I re-verified today, that change how we work</h4>
+  <h4>The official rules — corrected 17 Aug against the full document</h4>
+  <p class="small muted">Moe sent the complete Official Rules. Two of the bullets that stood here since
+  15 Aug were wrong, in our favor. This card now matches the actual document.</p>
   <ul style="margin-bottom:0">
-    <li><b>No external tools at all</b> — no Premiere, no After Effects, no other AI video models.
-    Everything is generated and cut inside Cinema Studio.</li>
-    <li><b>Music, voice and sound design must be AI-generated</b> and uploaded into the submission project.</li>
-    <li><b>No real face or voice as an input</b> — not even yours. Your family is in the story, not on the
-    screen.</li>
-    <li>Judged on four things: <b>directing and storytelling · visual craft · sound and editing ·
-    originality and concept.</b></li>
-    <li>Deadline <b>3 Sep, 11:59 PM PT</b>. A fourth judge was added: Alex Proyas.</li>
+    <li><b>Traditional editing tools are ALLOWED.</b> DaVinci Resolve, After Effects, Premiere, Photoshop,
+    Blender — for cutting, titles, transitions, compositing, masks, color grading and non-AI 3D. Only the
+    AI video/image generation must happen inside the Cinema Studio festival project. Every HUD line, timer
+    and percentage in this film is now deterministic Resolve text, not a generation gamble.</li>
+    <li><b>All audio must be AI-generated — but external AI audio tools are permitted</b>, made at any
+    time, even before the window. Every file must be uploaded into the project and the generating tool
+    identifiable on request. Voices and score can be locked before a single video shot.</li>
+    <li><b>The likeness rule is absolute:</b> no identifiable real person — face or voice, by any means,
+    consent irrelevant, including yourself and your family. All characters fully fictional. A fictional
+    AI child is allowed (non-harmful context) but must not resemble any identifiable real child.</li>
+    <li><b>Stage 1 screening is eligibility-only</b> (runtime ≥ 3:00 hard, format, watermark + packshot,
+    public social post from a public account, all assets kept in the project). The creative cut is
+    Stage 2: Higgsfield's team compiles the shortlist on <b>directing and storytelling · visual craft ·
+    sound and editing · originality and concept</b>; the jury and the paid-subscriber audience vote pick
+    the 14 winners from that shortlist.</li>
+    <li><b>Everything becomes public after the deadline</b> — prompts, generation history, assets — and
+    stays auditable for 24 months. The project must retain everything used in the film.</li>
+    <li>Deadline <b>3 Sep, 11:59 PM PT</b> — can be extended by Higgsfield, never shortened. Judges:
+    Catmull · Papamichael · Anderson · Proyas.</li>
   </ul>
 </div>
 
 <div class="tablewrap"><table>
 <tr><th>When</th><th>What</th></tr>
-<tr><td class="t">Aug 15–16</td><td>Three Soul IDs — Moe, Father, Layla. Ghena is never a face. <b>Test the audio tools before a single video shot</b>: if the generated score is generic, the silences in this film read as emptiness, not design.</td></tr>
-<tr><td class="t">Aug 17–19</td><td>The proof minute: the opening HUD, one simulation shot of the father, one clean hero dialogue shot, one warm flashback fragment, and a Cinema Studio export with text and sound intact.</td></tr>
-<tr><td class="t"><b>Aug 20</b></td><td><b>GO / NO-GO.</b> If that minute still looks like an AI demo after focused retries, we stop. We do not spend fourteen more days making the same weaknesses bigger.</td></tr>
-<tr><td class="t">Aug 20–27</td><td>Full generation. Hero dialogue shots first — they are the risk. Then the wordless material, which is most of the film.</td></tr>
-<tr><td class="t"><b>Aug 25</b></td><td>A silent picture skeleton of at least 3:10 must exist end to end. Without it the prize attempt stops being rational and we finish for our own reasons.</td></tr>
-<tr><td class="t">Aug 28</td><td>Picture lock.</td></tr>
-<tr><td class="t">Aug 29–31</td><td>Sound: voices, score, design, mix, titles. This is a quarter of the score and the film is built on silence.</td></tr>
-<tr><td class="t">Sep 1</td><td>Watermark, packshot, export verification, public post, submit. No creative generation on this day.</td></tr>
+<tr><td class="t">Aug 17–18</td><td><b>Audio first.</b> Three fictional AI voices, the score, and every ambience layer (wind, water, room tone — all AI, tools documented), locked and uploaded into the festival project. Frame-accurate Resolve animatic on the locked audio. Three fictional adult faces designed inside the project — descriptions from the old film, never its pixels. Ghena designed from scratch, distinct from any real child.</td></tr>
+<tr><td class="t">Aug 19–20</td><td>The three hero lip-sync shots — 1.09, 4.03, 6.03 — eight to ten takes each, generated against final audio, with off-axis fallbacks banked.</td></tr>
+<tr><td class="t"><b>Aug 20</b></td><td><b>GO / NO-GO — unchanged.</b> If the heroes still look like an AI demo after focused retries, we stop. We do not spend fourteen more days making the same weaknesses bigger.</td></tr>
+<tr><td class="t">Aug 21–26</td><td>Everything else, as short single-action clips: the workshop look and the drain and motorcycle material first, then the wordless coverage, which is most of the film.</td></tr>
+<tr><td class="t"><b>Aug 25</b></td><td>A silent picture skeleton of at least 3:10 must exist end to end on the animatic. Without it the prize attempt stops being rational and we finish for our own reasons.</td></tr>
+<tr><td class="t">Aug 27–28</td><td>Assembly in Resolve, cutting on the best frames. <b>Picture lock 28 Aug.</b> The timeline never dips below 3:05.</td></tr>
+<tr><td class="t">Aug 29–30</td><td>Typography (every HUD line, CONTINUE, the stone, the title), grade, final mix. Watermark and packshot onto the master.</td></tr>
+<tr><td class="t"><b>Aug 31</b></td><td><b>Generation freeze + compliance audit</b> against the official rules: likeness sweep, audio provenance list, project completeness, runtime, de-branded props, secular grave, MVS checklist.</td></tr>
+<tr><td class="t">Sep 1</td><td>Export, upload, public post from a public account — link verified logged-out — submit. No creative work on this day.</td></tr>
 <tr><td class="t">Sep 2–3</td><td>Buffer. Something will go wrong; this is where it goes.</td></tr>
 </table></div>
 
@@ -1072,12 +1123,14 @@ treat it as a free ticket.</p>
 </div>
 
 <div class="card">
-  <h4>3 · الفرز الأوّلي يقتلك قبل الجزء الجيّد</h4>
-  <p style="margin-bottom:0">ثلاث مراحل: فرز أوّلي ← قائمة قصيرة ← لجنة تحكيم. <b>معظم المشاركات تموت
-  في الفرز الأوّلي</b>، ومسابقة سابقة لهيغزفيلد استقبلت 8,752 مشاركة. البناء القديم يُنفق دقائقه الثلاث
-  الأولى في شرح كيف يعمل جهاز، قبل أن يكشف عمّا يدور حوله الفيلم. يقول Codex:
-  <q>تأجيل محاكاة الأب إلى الدقيقة الثالثة يعني إخفاء أقوى سؤال درامي في الفيلم إلى ما بعد اللحظة التي
-  يكون فيها كثير من المُفرزين قد رفضوه.</q></p>
+  <h4>3 · القائمة القصيرة تقتلك قبل الجزء الجيّد</h4>
+  <p style="margin-bottom:0">ثلاث مراحل: فرز أوّلي ← قائمة قصيرة ← لجنة تحكيم. <span class="small muted">
+  (تصحيح 17 آب مقابل القواعد الرسمية: الفرز الأوّلي أهليةٌ فقط؛ القطع الإبداعي هو القائمة القصيرة التي
+  يجمعها فريق هيغزفيلد من آلاف الأفلام المؤهّلة.)</span> مسابقة سابقة لهيغزفيلد استقبلت 8,752 مشاركة.
+  البناء القديم يُنفق دقائقه الثلاث الأولى في شرح كيف يعمل جهاز، قبل أن يكشف عمّا يدور حوله الفيلم.
+  يقول Codex: <q>تأجيل محاكاة الأب إلى الدقيقة الثالثة يعني إخفاء أقوى سؤال درامي في الفيلم إلى ما بعد
+  اللحظة التي يكون فيها كثير من المُفرزين قد رفضوه.</q> المنطق لم يتغيّر — مُراجع القائمة القصيرة الذي
+  يمرّ على آلاف الأفلام هو بالضبط الشخص الذي وُجد الافتتاح البارد من أجله.</p>
 </div>
 
 <div class="card">
@@ -1339,8 +1392,9 @@ treat it as a free ticket.</p>
   <h4>قواعد التوليد الخمس (دقّق Codex وKimi هذه الخطّة في 17 آب؛ هذه خلاصة التدقيق)</h4>
   <ul style="margin-bottom:0">
     <li><b>نصّ الآلة لا يُولَّد كصورة أبداً.</b> كلّ سطر واجهة وكلّ عدّاد وكلّ نسبة مئوية هو طبقة نصّ
-    داخل الأداة فوق لقطة نظيفة. النصّ المولَّد يتشوّه ويحرق المحاولات؛ الطبقات مضمونة ومقروءة دائماً.
-    كلا المدقّقَين سمّيا هذا الخطر الأوّل في الخطّة.</li>
+    تُضاف في DaVinci Resolve — مسموح صراحةً في القواعد الرسمية (تأكّد 17 آب) — فوق لقطة نظيفة. النصّ
+    المولَّد يتشوّه ويحرق المحاولات؛ الطبقات مضمونة ومقروءة دائماً. كلا المدقّقَين سمّيا هذا الخطر
+    الأوّل في الخطّة.</li>
     <li><b>مكان واحد وجهة كاميرا واحدة لكلّ مهمّة.</b> «اللقطة الواحدة» التي هي في الحقيقة مونتاج خفيّ
     هي قاتلة الجدول: يد واحدة فاشلة تُعيد توليد كلّ شيء.</li>
     <li><b>أرقام السطور أدناه هي نفسها أرقام النصّ أعلاه.</b> «6.03» هنا هي 6.03 هناك.</li>
@@ -1350,6 +1404,28 @@ treat it as a free ticket.</p>
     <li><b>الصق بطاقة الهوية في كلّ برومبت.</b> سطر واحد لكلّ شخصية: هوية Soul + الملابس + حالة الذقن.
     «مو» الساهر غير الحليق هو الـSoul نفسه مع تعديل ذقن، وليس هوية جديدة أبداً. انحراف الفيلم الأصلي
     (أربعة أزياء لرجل واحد) هو الدليل على أهمية هذا.</li>
+  </ul>
+</div>
+
+<div class="card warn">
+  <h4>التدقيق الثاني، 17 آب — بعد قراءة القواعد الرسمية (Codex بجهد أقصى + Kimi k3 بتفكير أقصى)</h4>
+  <ul style="margin-bottom:0">
+    <li><b>الصوت أوّلاً، الفيديو ثانياً.</b> الأصوات الثلاثة والموسيقى وكلّ طبقة أجواء (ريح، ماء، طنين
+    الغرفة — يجب أن تكون كلّها ذكاءً اصطناعياً أيضاً) تُولَّد بأدوات خارجية وتُقفَل وتُرفَع إلى المشروع
+    <em>قبل</em> أوّل مهمّة فيديو. ثم أنيماتيك دقيق الإطارات في Resolve على الصوت المقفل — واللقطات
+    الحاسمة تُولَّد على الصوت النهائي، لا على صوت مؤقّت.</li>
+    <li><b>المقاطع أدناه وحدات توليد، لا وحدات قصّ.</b> Resolve يقصّ على أفضل الإطارات أينما كانت؛
+    و«مهمّة الـ22 ثانية» يمكن أن تصير ثلاث لقطات أقصر بفعل واحد إذا كان ذلك أأمن. شبكة الثلاثين ثانية
+    تنظّم التوليد؛ لم تعد تقيّد المونتاج.</li>
+    <li><b>الوجوه: نحتفظ بالأوصاف، لا بالبكسلات أبداً.</b> إطارات الـ7:41 القديمة ليست مرجعاً — لا
+    لهويات Soul ولا للتركيب (صور من خارج المنصّة = إقصاء). البالغون الثلاثة يُصمَّمون من جديد داخل
+    مشروع المهرجان، خياليين بالبناء، ويُتحقَّق منهم مقابل قاعدة أقسى: يجب ألّا يشبهوا العائلة الحقيقية
+    أيضاً. و«غنى» تُصمَّم من الصفر، مختلفةً عن أيّ طفلة حقيقية — مطابقة الطفلة الحقيقية هي المخالفة،
+    لا الهدف.</li>
+    <li><b>بلا علامات وبلا رموز دينية.</b> لا شعارات على الدرّاجة أو القنّينة أو الملابس؛ القبر حجر
+    بسيط محايد — ونقشه طباعة Resolve، لا نصّ مولَّد أبداً.</li>
+    <li><b>أرضية المدّة 3:00، قطعياً.</b> الخطّ الزمني لا ينزل تحت 3:05 في أيّ لحظة من المونتاج؛ إذا
+    مات مقطع، تتمدّد ضربات المونتاج — لا نقصّ أبداً باتجاه الهاوية.</li>
   </ul>
 </div>
 
@@ -1517,7 +1593,7 @@ treat it as a free ticket.</p>
     يد ليلى تأخذ يده إلى بطنها؛ يد «غنى» تنزلق في يده الأخرى؛ ثم اللقطة الواسعة للثلاثة، من الخلف
     غالباً، تثبت على العائلة والبطن بينما تصل الضحكة صوتاً. سطر ليلى 6.05 يُقال بهدوء ووجهها مائل
     إلى كتفه — لا تزامن. <em>المهمّة C:</em> ريح؛ ماء يجري في مكان ما؛ ثماني ثوانٍ بلا موسيقى؛
-    العنوان بطاقة داخل الأداة، لا يُولَّد أبداً.</p>
+    العنوان بطاقة في Resolve، لا يُولَّد أبداً.</p>
     <p class="action"><b>الحوار.</b></p>
     <div class="line"><div class="id">6.02</div><div><span class="who father">الأب</span>
       <div class="say"><span class="paren">(خافتاً، من داخل العلبة)</span> «قُل لي ماذا فعلتَ اليوم.»</div></div></div>
@@ -1540,7 +1616,7 @@ treat it as a free ticket.</p>
   <h4>ترتيب التوليد (وليس ترتيب الخطّ الزمني)</h4>
   <p style="margin-bottom:0">1) اللقطات الحاسمة الثلاث — 1.09، 4.03، 6.03 — لأنها قرار نمضي/نتوقّف.
   2) المهمّة A من المقطع 1 + زيارة ورشة واحدة — هما اللتان تحدّدان مظهرَي الفيلم. 3) موادّ الدرّاجة
-  والمجرور. 4) كلّ الصامت الباقي. 5) الطبقات والصوت والعنوان داخل الأداة، أخيراً. إذا فشلت اللقطات
+  والمجرور. 4) كلّ الصامت الباقي. 5) الطبقات والصوت والعنوان في Resolve، أخيراً. إذا فشلت اللقطات
   الحاسمة بعد محاولات مركّزة يوم 20 آب، نتوقّف قبل توليد الـ80٪ الصامتة.</p>
 </div>
 
@@ -1648,21 +1724,32 @@ treat it as a free ticket.</p>
 <h2 id="odds-ar">08</h2>
 <div class="h2sub">الاحتمالات، بلا تجميل</div>
 
+<div class="card warn">
+  <h4>أُعيد الحساب في 17 آب مقابل القواعد الرسمية — الأرقام أدناه تحلّ محلّ جدول 15 آب</h4>
+  <p class="small" style="margin-bottom:0">أرسل «مو» القواعد الرسمية الكاملة؛ قرأها Codex‏
+  (gpt-5.6-sol، جهد أقصى) وKimi‏ (k3، تفكير أقصى) كاملةً وأعادا الحساب. رقم «تنويه الشرف 2.5–4٪»
+  القديم كان كريماً أكثر من اللازم: فقد عامَل الفرز الأوّلي كبوّابة جودة. في القواعد الحقيقية المرحلة
+  الأولى أهليةٌ فقط — والقطع الإبداعي هو <b>قائمة قصيرة</b> تُجمَع من آلاف الأفلام المؤهّلة، وكلّ
+  الجوائز الأربع عشرة تخرج من تلك القائمة.</p>
+</div>
+
 <div class="tablewrap"><table>
-<tr><th>النسخة</th><th>تنتهي قبل 3 أيلول</th><th>تنجو من الفرز</th><th>تنويه شرف (10 آلاف دولار)</th></tr>
-<tr><td class="t">UNCOUNTED</td><td>~85٪</td><td>~55–65٪</td><td><b>2.5–4٪</b></td></tr>
-<tr><td class="t">نسخة الـ 4:55</td><td>~45٪</td><td>~20–40٪</td><td>0.5–5٪</td></tr>
-<tr><td class="t">نسخة الـ 7:41 كما هي</td><td>—</td><td>غير مؤهّلة</td><td>0٪</td></tr>
-<tr><td class="t">فيلم جديد كلّياً</td><td>أقلّ من 50٪</td><td>—</td><td>أقلّ من 0.5٪</td></tr>
+<tr><th>الخطوة</th><th>Codex</th><th>Kimi</th><th>لماذا</th></tr>
+<tr><td class="t">فيلم مؤهّل موجود قبل 3 أيلول</td><td>78٪</td><td>80٪</td><td>نحو 15 مهمّة توليد مع إعاداتها تتّسع في 17 يوماً من طابور المهمّة الواحدة؛ الخطر المتبقّي هو انزلاق الجدول أو عثرة امتثال — وكلّه تحت السيطرة</td></tr>
+<tr><td class="t">يدخل القائمة القصيرة</td><td>5٪</td><td>5٪</td><td>افترض 4–6 آلاف مشاركة مؤهّلة وقائمة من نحو مئة فيلم: الأساس ~2٪، وفيلم قصّته أوّلاً بطباعة نظيفة وصوت محترف يساوي 2–3 أضعاف الأساس — لا عشرة أضعاف</td></tr>
+<tr><td class="t">يربح أيّ جائزة، إذا دخل القائمة</td><td>10٪</td><td>15٪</td><td>14 جائزة مقابل قائمة من نحو مئة فيلم؛ مع خصم جائزة الجمهور (تصويت المشتركين المدفوعين فقط، ولا قاعدة مصوّتين لديه)</td></tr>
+<tr><td class="t"><b>أيّ جائزة، إجمالاً</b></td><td><b>0.39٪</b></td><td><b>0.6٪</b></td><td><b>≈ من 1 على 170 إلى 1 على 260 — قُل 1 على 200.</b> القيمة المتوقّعة ≈ 150 دولاراً، شبه محصورة في تنويه الشرف (10 آلاف دولار)</td></tr>
 </table></div>
 
-<p>بدأ Kimi من 6–10٪ ثم نزل من تلقاء نفسه: <q>أقترب من موقف Codex؛ رقمي 6–10٪ كان كريماً أكثر من
-اللازم في مواجهة أكثر من 8,000 مشاركة على عشرة مقاعد.</q> وCodex يثبت عند 2.5٪. إذاً الرقم بين اثنين
-وأربعة في المئة، وهذه هي النسخة التي أعطيك إيّاها بدل النسخة المشجّعة.</p>
+<p class="small muted">ملاحظة توثيقية، لأن هذه الصفحة هي السجلّ: رقم Kimi الرئيسي كان «0.06٪
+(1 على 1,700)» — زلّة حسابية؛ مكوّناته الثلاثة نفسها حاصل ضربها 0.6٪. صُحّحت في الدمج، وبعد التصحيح
+يتطابق التقديران المستقلّان.</p>
 
 <p><b>مهما فعلنا، النتيجة الأرجح بفارق كبير هي ألّا تربح شيئاً.</b> هناك أربع عشرة جائزة في العالم كلّه
-لهذا. ما هو فعلاً تحت سيطرتك هو أن يوجد الفيلم وأن يكون جيّداً — وهذا الجزء نستطيع ضمانه تقريباً، ويستحقّ
-أن يُقال بصوت عالٍ، لأنه الجزء الذي سيبقى معك في تشرين الأوّل.</p>
+لهذا، وعند 1 على 200 تكون القيمة المتوقّعة نحو مئة وخمسين دولاراً مقابل تسعة عشر يوم عمل. ما هو فعلاً
+تحت سيطرتك هو أن يوجد الفيلم وأن يكون جيّداً — وهذا الجزء نستطيع ضمانه تقريباً، ويستحقّ أن يُقال بصوت
+عالٍ، لأنه الجزء الذي سيبقى معك في تشرين الأوّل. كلا المدقّقَين أنهيا بالجملة نفسها: هو يصنع هذا
+الفيلم من أجل الفيلم.</p>
 
 <p class="muted">المراكز الثلاثة الأولى يانصيب بين مئات الأفلام المرشّحة ولا يمكن هندستها. وجائزة الجمهور
 احتمالها 1–2٪ وتكافئ الانتشار لا الحرفة — انشره مع القصّة الحقيقية عن أبيك، وعامله كتذكرة مجّانية.</p>
@@ -1679,29 +1766,43 @@ treat it as a free ticket.</p>
 </div>
 
 <div class="card">
-  <h4>قواعد تحقّقتُ منها اليوم من جديد، وهي تغيّر طريقة عملنا</h4>
+  <h4>القواعد الرسمية — صُحّحت في 17 آب مقابل الوثيقة الكاملة</h4>
+  <p class="small muted">أرسل «مو» القواعد الرسمية الكاملة. نقطتان ممّا كان مكتوباً هنا منذ 15 آب كانتا
+  خاطئتين، ولصالحنا. هذه البطاقة تطابق الآن الوثيقة الفعلية.</p>
   <ul style="margin-bottom:0">
-    <li><b>لا أدوات خارجية إطلاقاً</b> — لا Premiere، ولا After Effects، ولا نماذج فيديو أخرى. كلّ شيء
-    يُولَّد ويُركَّب داخل Cinema Studio.</li>
-    <li><b>الموسيقى والصوت وتصميم الصوت يجب أن تكون مولّدة بالذكاء الاصطناعي</b> ومرفوعة داخل مشروع
-    المشاركة.</li>
-    <li><b>لا وجه حقيقي ولا صوت حقيقي كمُدخَل</b> — ولا حتى وجهك أنت. عائلتك في القصّة، لا على الشاشة.</li>
-    <li>التحكيم على أربعة أمور: <b>الإخراج والسرد · الحرفة البصرية · الصوت والمونتاج · الأصالة
-    والفكرة.</b></li>
-    <li>الموعد النهائي <b>3 أيلول، 11:59 مساءً بتوقيت الباسيفيك</b>. وأُضيف حكم رابع: Alex Proyas.</li>
+    <li><b>أدوات المونتاج التقليدية مسموحة.</b> DaVinci Resolve وAfter Effects وPremiere وPhotoshop
+    وBlender — للقصّ والعناوين والانتقالات والتركيب والأقنعة وتصحيح الألوان والتصميم ثلاثي الأبعاد غير
+    الذكي. فقط توليد الفيديو والصور بالذكاء الاصطناعي يجب أن يحدث داخل مشروع المهرجان في Cinema Studio.
+    كلّ سطر واجهة وعدّاد ونسبة في هذا الفيلم صار الآن نصّ Resolve مضموناً، لا مقامرة توليد.</li>
+    <li><b>كلّ الصوت يجب أن يكون مولَّداً بالذكاء الاصطناعي — لكن أدوات الصوت الخارجية مسموحة</b>،
+    وتُصنع في أيّ وقت، حتى قبل نافذة المسابقة. كلّ ملفّ يُرفع إلى المشروع مع القدرة على تسمية الأداة
+    المولِّدة عند الطلب. الأصوات والموسيقى يمكن إقفالها قبل أيّ لقطة فيديو.</li>
+    <li><b>قاعدة الشبه مطلقة:</b> لا شخص حقيقي يمكن التعرّف عليه — وجهاً أو صوتاً، بأيّ وسيلة، والموافقة
+    لا تغيّر شيئاً، بما في ذلك أنت نفسك وعائلتك. كلّ الشخصيات خيالية بالكامل. الطفل الخيالي المولَّد
+    مسموح (في سياق غير مؤذٍ) لكن يجب ألّا يشبه أيّ طفل حقيقي يمكن التعرّف عليه.</li>
+    <li><b>المرحلة الأولى من الفرز هي أهلية فقط</b> (المدّة ≥ 3:00 قطعياً، الصيغة، العلامة المائية +
+    لقطة الختام، منشور علني من حساب علني، كلّ الأصول محفوظة في المشروع). القطع الإبداعي هو المرحلة
+    الثانية: فريق هيغزفيلد يجمع القائمة القصيرة على <b>الإخراج والسرد · الحرفة البصرية · الصوت
+    والمونتاج · الأصالة والفكرة</b>؛ ثم لجنة التحكيم وتصويت الجمهور (المشتركون المدفوعون فقط) يختاران
+    الفائزين الأربعة عشر من تلك القائمة.</li>
+    <li><b>كلّ شيء يصير علنياً بعد الموعد النهائي</b> — البرومبتات وتاريخ التوليد والأصول — ويبقى قابلاً
+    للتدقيق 24 شهراً. المشروع يجب أن يحتفظ بكلّ ما استُخدم في الفيلم.</li>
+    <li>الموعد النهائي <b>3 أيلول، 11:59 مساءً بتوقيت الباسيفيك</b> — يمكن تمديده، ولا يمكن تقصيره أبداً.
+    الحكّام: Catmull · Papamichael · Anderson · Proyas.</li>
   </ul>
 </div>
 
 <div class="tablewrap"><table>
 <tr><th>متى</th><th>ماذا</th></tr>
-<tr><td class="t">15–16 آب</td><td>ثلاث هويّات Soul — مو، الأب، ليلى. غنى لا تكون وجهاً أبداً. <b>جرّب أدوات الصوت قبل أيّ لقطة فيديو</b>: إذا كانت الموسيقى المولّدة عادية، فالصمت في هذا الفيلم سيُقرأ فراغاً لا تصميماً.</td></tr>
-<tr><td class="t">17–19 آب</td><td>دقيقة الإثبات: الافتتاح بالواجهة الرقمية، لقطة محاكاة واحدة للأب، لقطة حوار حاسمة نظيفة، وشذرة استرجاع دافئة، وتصدير من Cinema Studio بالنصّ والصوت سليمين.</td></tr>
-<tr><td class="t"><b>20 آب</b></td><td><b>نمضي / نتوقّف.</b> إذا بقيت تلك الدقيقة تبدو كعرض قدرات ذكاء اصطناعي بعد محاولات مركّزة، نتوقّف. لن ننفق أربعة عشر يوماً إضافياً في تكبير نقاط الضعف نفسها.</td></tr>
-<tr><td class="t">20–27 آب</td><td>التوليد الكامل. لقطات الحوار الحاسمة أوّلاً — فهي الخطر. ثم الموادّ الصامتة، وهي معظم الفيلم.</td></tr>
-<tr><td class="t"><b>25 آب</b></td><td>يجب أن يوجد هيكل صورة صامت لا يقلّ عن 3:10 من أوّله إلى آخره. بدونه تتوقّف محاولة الجائزة عن كونها عقلانية، ونُكمل لأسبابنا نحن.</td></tr>
-<tr><td class="t">28 آب</td><td>إقفال الصورة.</td></tr>
-<tr><td class="t">29–31 آب</td><td>الصوت: الأصوات، الموسيقى، تصميم الصوت، المكساج، العناوين. هذا ربع الدرجة، والفيلم مبنيّ على الصمت.</td></tr>
-<tr><td class="t">1 أيلول</td><td>العلامة المائية، لقطة الختام، التحقّق من التصدير، النشر العلني، الإرسال. لا توليد إبداعي في هذا اليوم.</td></tr>
+<tr><td class="t">17–18 آب</td><td><b>الصوت أوّلاً.</b> ثلاثة أصوات خيالية بالذكاء الاصطناعي، والموسيقى، وكلّ طبقات الأجواء (ريح، ماء، طنين الغرفة — كلّها ذكاء اصطناعي، مع توثيق الأدوات)، تُقفَل وتُرفَع إلى مشروع المهرجان. أنيماتيك دقيق الإطارات في Resolve على الصوت المقفل. تصميم ثلاثة وجوه بالغة خيالية داخل المشروع — الأوصاف من الفيلم القديم، لا بكسلاته أبداً. و«غنى» تُصمَّم من الصفر، مختلفة عن أيّ طفلة حقيقية.</td></tr>
+<tr><td class="t">19–20 آب</td><td>اللقطات الحاسمة الثلاث — 1.09، 4.03، 6.03 — ثماني إلى عشر محاولات لكلّ منها، على الصوت النهائي، مع لقطات بديلة جانبية محفوظة.</td></tr>
+<tr><td class="t"><b>20 آب</b></td><td><b>نمضي / نتوقّف — بلا تغيير.</b> إذا بقيت اللقطات الحاسمة تبدو كعرض قدرات بعد محاولات مركّزة، نتوقّف. لن ننفق أربعة عشر يوماً إضافياً في تكبير نقاط الضعف نفسها.</td></tr>
+<tr><td class="t">21–26 آب</td><td>كلّ الباقي، كلقطات قصيرة بفعل واحد: مظهر الورشة وموادّ المجرور والدرّاجة أوّلاً، ثم التغطية الصامتة، وهي معظم الفيلم.</td></tr>
+<tr><td class="t"><b>25 آب</b></td><td>يجب أن يوجد هيكل صورة صامت لا يقلّ عن 3:10 من أوّله إلى آخره على الأنيماتيك. بدونه تتوقّف محاولة الجائزة عن كونها عقلانية، ونُكمل لأسبابنا نحن.</td></tr>
+<tr><td class="t">27–28 آب</td><td>التجميع في Resolve، بالقصّ على أفضل الإطارات. <b>إقفال الصورة 28 آب.</b> الخطّ الزمني لا ينزل تحت 3:05.</td></tr>
+<tr><td class="t">29–30 آب</td><td>الطباعة (كلّ سطور الواجهة، «متابعة»، الشاهدة، العنوان)، تصحيح الألوان، المكساج النهائي. العلامة المائية ولقطة الختام على النسخة الرئيسية.</td></tr>
+<tr><td class="t"><b>31 آب</b></td><td><b>تجميد التوليد + تدقيق الامتثال</b> مقابل القواعد الرسمية: مسح الشبه، قائمة مصادر الصوت، اكتمال المشروع، المدّة، الأغراض بلا علامات، القبر المحايد، قائمة متطلّبات التقديم.</td></tr>
+<tr><td class="t">1 أيلول</td><td>التصدير، الرفع، المنشور العلني من حساب علني — يُتحقَّق من الرابط دون تسجيل دخول — والإرسال. لا عمل إبداعي في هذا اليوم.</td></tr>
 <tr><td class="t">2–3 أيلول</td><td>احتياطي. شيء ما سيسوء؛ وهنا يقع.</td></tr>
 </table></div>
 
