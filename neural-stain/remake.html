@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEURAL STAIN — Remake Bible v2</title>
+<meta name="description" content="Frame-by-frame logic of the original 7:41, the locked reference kit, and the long-take generation plan for the Higgsfield rebuild.">
+<style>
+  :root{--bg:#0c0d10;--panel:#14161b;--panel2:#191c22;--ink:#e9eaf0;--muted:#9aa0b0;--line:#262a33;--accent:#6ee7a8;--accent-dim:#1b3328;--warn:#ffcb6b;--warn-dim:#332a12;--bad:#ff7a7a;--bad-dim:#3a1c1c;--hud:#7fd7ff}
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 16px 80px;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-wrap:break-word}
+  .wrap{max-width:760px;margin:0 auto}
+  header{padding:34px 0 6px}
+  .kicker{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+  h1{font-size:clamp(30px,8vw,46px);margin:10px 0 6px;letter-spacing:-.03em;line-height:1.05}
+  .sub{color:var(--muted);margin:0;font-size:15.5px}
+  .status{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+  .chip{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;padding:8px 11px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:700}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin:44px 0 4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  h2 + .h2sub{font-size:clamp(22px,5vw,28px);font-weight:700;letter-spacing:-.02em;margin:0 0 14px}
+  p{margin:0 0 12px}
+  .lede{font-size:17px}
+  .muted{color:var(--muted)}
+  .small{font-size:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin:0 0 12px}
+  .card.go{border-color:#2c5c44;background:var(--accent-dim)}
+  .card.warn{border-color:#5c4a1c;background:var(--warn-dim)}
+  .card.bad{border-color:#6b2f2f;background:var(--bad-dim)}
+  .card h4{margin:0 0 8px;font-size:15px}
+  ul{margin:0 0 12px;padding-left:20px} li{margin-bottom:7px}
+  .scene{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:0 0 16px;overflow:hidden}
+  .scene-head{background:var(--panel2);border-bottom:1px solid var(--line);padding:13px 16px}
+  .slug{font:700 13px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--hud)}
+  .tc{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);margin-top:6px;display:block}
+  .scene-body{padding:15px 16px 6px}
+  .why{border-left:3px solid var(--warn);padding:6px 12px;margin:0 0 13px;color:#e6d9b5;background:#1a170f;border-radius:0 10px 10px 0;font-size:15px}
+  .why b{color:var(--warn)}
+  .say{color:var(--ink)} .who{font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .who.father{color:#c3a6ff}.who.son{color:#ffd08a}.who.lens{color:var(--hud)}.who.layla{color:#ff9ec4}.who.other{color:#9aa0b0}
+  details{margin:6px 0 12px} summary{cursor:pointer;color:var(--hud);font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace}
+  details img{width:100%;height:auto;border-radius:8px;margin:8px 0;display:block;border:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 14px} .tbl{overflow-x:auto}
+  th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+  th{color:var(--muted);font:600 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
+  code,kbd{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;background:#1d2028;padding:2px 6px;border-radius:6px}
+  .ref{display:grid;grid-template-columns:120px 1fr;gap:10px;border-bottom:1px solid var(--line);padding:9px 0}
+  .ref b{color:var(--hud);font:700 12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+  a{color:var(--hud)}
+  nav.top{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 0;font-size:14px}
+</style>
+</head>
+<body><div class="wrap">
+<header>
+  <div class="kicker">Neural Stain · Higgsfield rebuild</div>
+  <h1>Remake Bible v2</h1>
+  <p class="sub">Your original 7:41, watched at 1–2 frames per second. What each cut means, what must stay identical, and how every scene gets generated as a long take.</p>
+  <div class="status">
+    <span class="chip">updated <b>22 Aug 2026</b></span>
+    <span class="chip">on your phone <b>29 clips</b> (v1, text-only)</span>
+    <span class="chip">v2 = <b>references + long takes</b></span>
+    <span class="chip">deadline <b>3 Sep</b></span>
+  </div>
+  <nav class="top"><a href="#fix">What changes</a><a href="#kit">Locked kit</a><a href="#film">Frame by frame</a><a href="#units">Generation units</a><a href="#qc">QC</a><a href="index.html">Script page</a><a href="original.html">Original cut</a></nav>
+</header>
+
+<h2 id="fix">your three notes</h2>
+<div class="h2sub">What changes, and why</div>
+
+<div class="card bad"><h4>1 · "Why 5 or 8 seconds? Make them 30."</h4>
+<p class="small">Thursday night the couch scene was sent at 30 s twice, 15 s twice, 10 s once — all five came back <code>failed</code> (not a content block). Only 5 s and 8 s rendered. That is why the clips are fragments. It was never a choice.</p>
+<p class="small"><b>v2:</b> every scene segment is one take of up to 30 s, written as timestamped beats with ONE speaker per beat and a locked camera, and chained with Sequel inside a scene. First proof = the 30 s couch test queued today (0 credits, Unlimited).</p></div>
+
+<div class="card bad"><h4>2 · "Glasses appear and disappear. Lenses change. Food changes. Father's voice changes."</h4>
+<p class="small">Every v1 clip was generated from text alone — no face, prop or voice reference attached (<code>reference_elements: []</code> on all 49 jobs). Text cannot hold a face, a case or a voice steady across clips.</p>
+<p class="small"><b>v2:</b> a locked reference kit generated first, inside the project, and attached to every clip with Seedance roles (<code>@Image 1 defines FATHER's face, hair, beard, clothing. Do not use the background.</code>). One father, one son, one Layla, one child, one lens case, one table of food, one room, one future room. One voice sample per speaker attached as <code>@Audio</code>. No glasses at all (they were never in your film).</p></div>
+
+<div class="card bad"><h4>3 · "Go frame by frame. You are missing the points."</h4>
+<p class="small">Done below — 1:20–3:28 at 2 fps, the rest at 1 fps, 38 contact sheets, every cut read for its <b>why</b>. The activation is: through the eye → into the brain → the effect → back on his face → his POV. The table is scanned item by item with the harm each one causes. The father is scanned for <b>fatigue and stress</b>, never a heart attack. The lenses are one small round silver case, and that same case is what he leaves on the grave.</p></div>
+
+<h2 id="kit">locked kit</h2>
+<div class="h2sub">The references every clip is generated against</div>
+<p class="muted small">Each is one clean image generated inside the festival project (Cinema Studio → Image), approved once, then attached to every clip that contains it. Descriptions are from your original frames.</p>
+
+<div class="ref"><b>FATHER</b><div>Late 60s. Balding, short silver hair on the sides, full silver beard (your cancer reading: thinner and fully bald in the late shots). Navy shirt-jacket over a grey t-shirt, tan trousers, grey socks, no shoes. <b>No glasses.</b> Voice: low, slow, unhurried, tired warmth.</div></div>
+<div class="ref"><b>SON (MOE)</b><div>Early 30s, short dark hair, full trimmed beard, round friendly face. Couch: olive-green t-shirt, dark jeans. Street/market: dark charcoal sweater. Restaurant: dark grey shirt. Office: navy shirt. Proposal: grey blazer. Wedding: grey suit. Moving/hospital: blue shirt. Ending: olive long-sleeve. Voice: young, calm baritone.</div></div>
+<div class="ref"><b>FUTURE SON</b><div>Same face, very overweight, unkempt beard, same olive tee, blue jeans, brown shoes. Derived from the SON card.</div></div>
+<div class="ref"><b>LAYLA</b><div>Early 30s, long straight dark hair. Date: burgundy velvet turtleneck dress. Proposal: dark green velvet dress. Wedding: white lace, white roses. Ending: grey turtleneck, dark jeans, white sneakers, visibly pregnant. Hospital: blue gown.</div></div>
+<div class="ref"><b>GHINA (AI child)</b><div>Fictional 4-year-old girl, voluminous light-brown curls, pink long-sleeve top, light jeans, white sneakers. Must NOT resemble the real child (festival rule). Baby version: pink fleece.</div></div>
+<div class="ref"><b>LENS CASE</b><div>Small round silver two-piece contact-lens case, ~4 cm. Father takes it from his pocket on the couch (0:38). Son places it beside the bouquet at the grave (7:22). Same object, same colour, both times.</div></div>
+<div class="ref"><b>THE TABLE</b><div>Low wooden coffee table. Left→right: black TV remote, burger on a white plate, glazed donut on a white plate, red soda can. Never changes between shots.</div></div>
+<div class="ref"><b>THE ROOM</b><div>Warm wood-panelled wall, dark wall TV, grey fabric three-seat sofa, TV light flicker. Night.</div></div>
+<div class="ref"><b>FUTURE ROOM</b><div>Peeling grey-green plaster, pale beige worn couch, brass floor lamp on the right, plain white wall clock with red second hand, cold desaturated grade.</div></div>
+<div class="ref"><b>LENS UI</b><div>Neon cyan double doors that swing open; cyan-to-purple glowing rectangle that plays the consequence; orange glowing labels (FATIGUE: SEVERE / STRESS LEVEL: HIGH); red / amber labels on food. Text labels are added in Resolve, the glow shapes are generated.</div></div>
+<div class="ref"><b>VOICES</b><div>FATHER, SON, LENS (calm synthetic, genderless, unhurried), LAYLA, HONEY SELLER. One sample each, attached as <code>@Audio</code>; the rules allow external AI voice tools, so these can also be re-voiced in post if the in-clip voice drifts.</div></div>
+
+<h2 id="film">frame by frame</h2>
+<div class="h2sub">The film, block by block, with the why</div>
+<p class="muted small">Timecodes are from your 7:41. Each block has its contact sheets folded underneath so you can check me.</p>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 1 · Prison parable</div><span class="tc">0:00 – 0:06</span></div><div class="scene-body">
+<p>Concrete cell, fluorescent strips. Four men in grey jumpsuits — one on the bunk, two standing, one at the steel table. White gas pours from the ceiling vent. The man front-centre grabs his head and drops.</p>
+<p><span class="who other">Narration</span> <span class="say">"Prisoners, after being told they were being gassed with poison, died from the power of fear alone, even though they were only breathing harmless air."</span></p>
+<div class="why"><b>Why:</b> the thesis in six seconds — belief alone can kill the body. Everything the lenses do later is this sentence applied.</div>
+<details><summary>sheet 0:00–0:16</summary><img loading="lazy" src="sheets/a_0.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 2 · The couch, present day</div><span class="tc">0:06 – 1:29</span></div><div class="scene-body">
+<p>Wide: son (olive tee, burger in both hands) and father (navy shirt-jacket, legs crossed, remote in hand) on the grey sofa, TV light flickering. Table: remote, burger plate, donut plate, red can. Coverage alternates over-the-shoulder close-ups, a two-shot, and once a top-down wide of the whole sofa (0:22).</p>
+<p><span class="who son">Son</span> <span class="say">"Dad, I'm going to propose to Layla."</span> · <span class="who father">Father</span> <span class="say">"Propose? You think you're ready for that?"</span> · <span class="who son">Son</span> <span class="say">"I love her."</span> · <span class="who father">Father</span> <span class="say">"Love is easy. Responsibility isn't. You can't even control what you eat."</span> · <span class="who son">Son</span> <span class="say">"I'd rather die ten years earlier happy than spend ten extra years eating broccoli and practically living in the gym."</span> · <span class="who father">Father</span> <span class="say">"You think like a child. You're still living in my house, using my money, and you think you're ready to build a family?"</span></p>
+<p>0:37 — the father reaches into his pocket, takes out the <b>small round silver lens case</b>, opens it, sets it on the table. <span class="who father">Father</span> <span class="say">"You need clarity."</span> · <span class="who son">Son</span> <span class="say">"Contacts? My vision is fine."</span> · <span class="who father">Father</span> <span class="say">"These aren't for your eyesight. They're AI lenses. I've been building them for years."</span> · <span class="who son">Son</span> <span class="say">"What do they do?"</span> · <span class="who father">Father</span> <span class="say">"They show you the consequences of your choices before you make them. They read your thoughts, and when necessary, they override them."</span> · <span class="who son">Son</span> <span class="say">"Override? You mean they control what I see, what I feel?"</span> · <span class="who father">Father</span> <span class="say">"Exactly. Only if you allow it."</span></p>
+<p>0:59 — close-up: the son puts a lens in each eye with a fingertip. <span class="who son">Son</span> <span class="say">"I don't feel anything."</span> · <span class="who father">Father</span> <span class="say">"Don't speak. Just think the word: activate."</span> 1:19 — close-up: eyes close … eyes open … 1:27 — <b>extreme close-up of one blue eye</b>, tiny points of light inside the iris.</p>
+<div class="why"><b>Why:</b> the whole argument (love vs responsibility, the burger in his hands the entire time) happens before the gift, so the lenses answer an argument he already lost. The eye close-up is the door into the next block — we go in through the eye.</div>
+<details><summary>sheets 0:16–1:30</summary><img loading="lazy" src="sheets/a_1.jpg" alt=""><img loading="lazy" src="sheets/a_2.jpg" alt=""><img loading="lazy" src="sheets/a_3.jpg" alt=""><img loading="lazy" src="sheets/a_4.jpg" alt=""><img loading="lazy" src="sheets/a_5.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 3 · Activation — eye → brain → effect</div><span class="tc">1:28 – 1:46</span></div><div class="scene-body">
+<p>Blue neural network in black space → a translucent brain assembles inside it → a white signal travels through the brain → the brain <b>flares red-orange</b> from the centre outward (1:30–1:36). Cut back to the son's face: dead stare, warm room (1:36–1:44).</p>
+<p><span class="who lens">Lens</span> <span class="say">"Clarity mode activated. A good deed is required every 24 hours or the lenses will shut down permanently."</span> · <span class="who father">Father</span> <span class="say">"In your mind, tell it to show you what your eyes refuse to see."</span> · <span class="who son">Son</span> <span class="say">"AI, show me things as they really are."</span></p>
+<div class="why"><b>Why:</b> the camera travels the path of the device: eye → brain → effect. The flare is the override taking hold. The stare that follows is a man whose perception has just been handed to a machine.</div>
+<details><summary>sheets 1:30–1:46 (2 fps)</summary><img loading="lazy" src="sheets/b_0.jpg" alt=""><img loading="lazy" src="sheets/b_1.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 4 · His POV — the table and the father, scanned</div><span class="tc">1:44 – 2:10</span></div><div class="scene-body">
+<p>1:44 — the camera pulls back from his face until we see him <b>reflected in the dark TV</b>, then cuts to what he sees: the table and the wall (his POV, no people). 1:48 — the colour <b>drains to grey</b>: "things as they really are". 1:54 — colour returns and the scan begins: the red can turns <b>black with a skull and POISON</b>; then, one item at a time, labels type in: <b>ARTERIAL PLAQUE / BLOCKED ARTERIES</b> over the burger (red), <b>OXIDIZED FAT / CELLULAR DAMAGE</b> over the donut (amber), <b>METABOLIC POISON / LIVER STRESS</b> over the can (red). The labels hold for ~6 s.</p>
+<p>2:01 — he turns to his father: medium shot, father <b>in profile</b>, sitting, looking at him. <b>FATIGUE: SEVERE</b> appears by his head, then <b>STRESS LEVEL: HIGH</b> by his chest, both orange glow. They hold ~5 s and fade.</p>
+<div class="why"><b>Why:</b> first the world, then the person. The food shows the <i>future harm</i> of each item, item by item, not a generic warning. The father's readout is <b>fatigue and stress</b> — the first clue that he is not well, planted in the son's new eyes. Never a heart attack on screen.</div>
+<details><summary>sheets 1:46–2:10 (2 fps)</summary><img loading="lazy" src="sheets/b_2.jpg" alt=""><img loading="lazy" src="sheets/b_3.jpg" alt=""><img loading="lazy" src="sheets/b_4.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 5 · Doors and portals</div><span class="tc">2:08 – 2:24</span></div><div class="scene-body">
+<p>Father in profile, talking, then a soft dissolve to the two-shot, then to the son's close-up, then black.</p>
+<p><span class="who father">Father</span> <span class="say">"Ask it for your future. The close future appears as doors. The distant future appears as portals…"</span> · <span class="who son">Son</span> <span class="say">"Show me my distant future if I keep living like this."</span></p>
+<div class="why"><b>Why:</b> the rule of the interface is spoken once, here, so the neon doors on the motorcycle and the black-hole portal in the wall need no explanation later.</div>
+<details><summary>sheets 2:10–2:24 (2 fps)</summary><img loading="lazy" src="sheets/b_5.jpg" alt=""><img loading="lazy" src="sheets/b_6.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 6 · The portal and the future</div><span class="tc">2:22 – 3:20</span></div><div class="scene-body">
+<p>Black → the table POV again, warm → a <b>black hole opens in the wall behind the TV</b>, grows, swallows the frame as a grey vortex (2:28–2:36) → the FUTURE ROOM: the very overweight son sprawled on the pale couch under the floor lamp, same olive tee. He stirs, tries to push himself up. <b>Black root-cables grow out from under him</b>, across the cushions, around his legs and arms, pulling him back into the couch — his own body has taken him. He fights, sinks, gives up (2:40–3:05).</p>
+<p>3:05 — cut to the wall clock at 10:10, small on the peeling wall → push in → the red second hand sweeps to 12 and <b>stops dead</b> (3:09–3:17). 3:18 — the future son's face, asleep, then a gasp → snap to the <b>present</b>: close-up, eyes wide, terrified, warm room (3:20–3:28).</p>
+<div class="why"><b>Why:</b> the couch potato made literal — the roots grow from him into the couch, not from outside. The clock ticking normally and then freezing is his time running out, stopped at the instant of realisation. The gasp is the cut back to now.</div>
+<details><summary>sheets 2:20–3:28 (2 fps)</summary><img loading="lazy" src="sheets/c_0.jpg" alt=""><img loading="lazy" src="sheets/c_1.jpg" alt=""><img loading="lazy" src="sheets/c_2.jpg" alt=""><img loading="lazy" src="sheets/c_3.jpg" alt=""><img loading="lazy" src="sheets/c_4.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 7 · Why now</div><span class="tc">3:20 – 3:28</span></div><div class="scene-body">
+<p><span class="who son">Son</span> <span class="say">"This is more than I expected. Why now?"</span> · <span class="who father">Father</span> <span class="say">"Because the truth, even when it hurts, is the only thing that can save you. I won't always be here to guide you. Let the lenses guide you, go to the market, and bring honey."</span></p>
+<div class="why"><b>Why:</b> "I won't always be here" is the second clue, and "bring honey" is the errand that becomes the second good deed.</div></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 8 · The motorcycle deed</div><span class="tc">3:28 – 4:38</span></div><div class="scene-body">
+<p>Round mirror close-up: the son in a black open-face helmet, city sliding past. Drone wide: the motorcycle and a <b>blue convertible</b> side by side at a red light. POV from the handlebars: the driver's arm tosses a <b>clear plastic bottle</b>; it skids onto the asphalt ahead. Mirror close-up: his jaw tightens.</p>
+<p><span class="who lens">Lens</span> <span class="say">"Volume reduced. I can tell you're angry. True strength is mastering your reaction. Do you want me to suppress the anger, or will you handle it?"</span> · <span class="who son">Son</span> <span class="say">"Show me the consequences of not picking it up."</span></p>
+<p>3:50 — POV: <b>neon cyan double doors</b> draw themselves over the road, swing open, and become a <b>cyan-purple rectangle</b> that plays the future: a rider hits the bottle on a wet road and goes down → a storm drain choked with trash, water backing up → the driver of the convertible, who threw it. The rectangle collapses.</p>
+<p><span class="who lens">Lens</span> <span class="say">"The next rider may hit the bottle and lose control. If the bottle reaches the drain, trash buildup can block the flow and cause flooding during heavy rain. Every small action creates a future echo."</span> · <span class="who son">Son</span> <span class="say">"Unbelievable. How did it come to this? I'll handle it."</span></p>
+<p>4:20 — wide: he walks into the empty street in his dark sweater and helmet, bends, picks the bottle up, carries it to a <b>blue bin</b> (dissolve). Drone: the light is green, he rides off.</p>
+<p><span class="who lens">Lens</span> <span class="say">"Decision acknowledged. Good deed registered. 24-hour timer reset."</span></p>
+<div class="why"><b>Why:</b> the "close future as doors" rule paid off exactly as the father described. The lens offers to suppress his anger; he declines — "I'll handle it" — the first time he chooses not to be overridden.</div>
+<details><summary>sheets 3:28–4:38</summary><img loading="lazy" src="sheets/d_0.jpg" alt=""><img loading="lazy" src="sheets/d_1.jpg" alt=""><img loading="lazy" src="sheets/d_2.jpg" alt=""><img loading="lazy" src="sheets/d_3.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 9 · The honey deed</div><span class="tc">4:38 – 5:08</span></div><div class="scene-body">
+<p>Bright cereal aisle, he walks toward camera in the dark sweater. Wide: a rustic wooden stand stacked with golden honey jars, a young seller in a <b>blue sweater</b> behind it, the son on the right. Son in profile close-up; seller close-up with a wide, fixed grin.</p>
+<p><span class="who son">Son</span> <span class="say">"Is this the pure stuff?"</span> · <span class="who other">Seller</span> <span class="say">"Yes, best honey in town."</span> · <span class="who lens">Lens</span> <span class="say">"Based on body language and tone: fake smile detected, misleading claim, diluted product, long-term health risk."</span> · <span class="who son">Son</span> <span class="say">"Some shorten your life fast with violence, others slowly with lies. I'll pass."</span></p>
+<p>5:02 — dissolve to a memory: an outdoor market, an <b>elderly woman</b> smiling behind dark amber jars, the son from behind.</p>
+<div class="why"><b>Why:</b> the second deed is refusing a lie. The old woman is the honest honey of the father's generation — the thing he was really sent to find.</div>
+<details><summary>sheets 4:38–5:08</summary><img loading="lazy" src="sheets/d_4.jpg" alt=""><img loading="lazy" src="sheets/d_5.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 10 · Time passes</div><span class="tc">5:08 – 5:20</span></div><div class="scene-body">
+<p>One apartment block, low angle, timelapse: day clouds → orange sunset → night, star trails and the Milky Way → dawn.</p>
+<div class="why"><b>Why:</b> days of deeds, compressed. Keeps the 24-hour rule alive without a word.</div>
+<details><summary>sheet 5:08–5:20</summary><img loading="lazy" src="sheets/d_6.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 11 · The date</div><span class="tc">5:20 – 6:32</span></div><div class="scene-body">
+<p>Night, from behind: he stands on the sidewalk facing a lit apartment building, phone to his ear, cars passing. Then a cobbled street: he walks beside <b>Layla in a burgundy velvet dress</b> to a glowing restaurant door. Inside, brick walls: over-the-shoulder close-ups — he laughs as he talks, she answers.</p>
+<p><span class="who layla">Layla</span> <span class="say">"The couple that walked in behind us looks like they're meeting face to face for the first time. Imagine if one of them used filters and the other didn't even recognize them — that would be funny."</span> · <span class="who son">Son</span> <span class="say">"Our children won't need filters, because their father is extremely good looking."</span></p>
+<p>5:58 — <b>his POV across the table</b>: Layla laughing against the brick wall, two plates, water glasses, his hands at the bottom of frame. The world behind her changes while she and the table stay: <b>the Moon with Earth rising</b> → <b>a dinosaur jungle</b> → <b>a Victorian candlelit dining room</b> (she is in a Victorian dress) → <b>floating sky islands</b> → <b>a cobwebbed blue ruin</b> → <b>a cartoon avatar of her</b> → black → her real face, calm.</p>
+<p><span class="who lens">Lens</span> <span class="say">"Filters can do far more than that. I can reshape your entire perception."</span> · <span class="who son">Son</span> <span class="say">"Show me."</span> · <span class="who lens">Lens</span> <span class="say">"Applying a beauty enhancement."</span> · <span class="who son">Son</span> <span class="say">"Beautiful, but not her."</span> · <span class="who lens">Lens</span> <span class="say">"I'll provide other examples. I can also simulate conversations with historical or personally relevant individuals."</span> · <span class="who son">Son</span> <span class="say">"Yeah, no. That feels fake. I just want to talk to her."</span> · <span class="who lens">Lens</span> <span class="say">"Acknowledged."</span></p>
+<p>6:24 — side wide of the two of them at the table, both laughing; wider.</p>
+<div class="why"><b>Why:</b> perception is editable — and he chooses the real her. Same framing for every world so the only thing that changes is the world.</div>
+<details><summary>sheets 5:20–6:32</summary><img loading="lazy" src="sheets/d_7.jpg" alt=""><img loading="lazy" src="sheets/d_8.jpg" alt=""><img loading="lazy" src="sheets/d_9.jpg" alt=""><img loading="lazy" src="sheets/d_10.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 12 · Life</div><span class="tc">6:32 – 6:50</span></div><div class="scene-body">
+<p>Office by a bright window, navy shirt, typing (6 s) → golden-hour park, he kneels with the ring, she in dark green velvet, hands to her mouth (3 s) → garden wedding under a white flower arch, grey suit, white lace, <b>the father beside them in a navy tuxedo</b> (2 s) → empty sunlit apartment, he lifts a box, she watches with hands on hips (4 s) → hospital: Layla in a blue gown, he holds her hand (3 s).</p>
+<div class="why"><b>Why:</b> the father is alive at the wedding — the last time we see him standing.</div>
+<details><summary>sheet 6:32–6:50</summary><img loading="lazy" src="sheets/d_11.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 13 · Ghina</div><span class="tc">6:50 – 7:05</span></div><div class="scene-body">
+<p>Baby in pink fleece at an open laptop with a code editor, caption <b>FIXING MY FATHER'S CODE WHILE HE'S SLEEPING.</b> → title card <b>4 Years Later</b> on a warm blurred interior → a four-year-old with big curls at a gaming laptop in her bedroom, wardrobe stickers behind her.</p>
+<div class="why"><b>Why:</b> the legacy beat. Both shots were real footage in your cut and are rebuilt as an AI child (festival rule). ✅ both already generated and on your phone.</div>
+<details><summary>sheet 6:50–7:05</summary><img loading="lazy" src="sheets/d_12.jpg" alt=""></details></div></div>
+
+<div class="scene"><div class="scene-head"><div class="slug">Block 14 · The grave</div><span class="tc">7:05 – 7:41</span></div><div class="scene-body">
+<p>Sunlit plaza with an arched colonnade: Layla from behind in a grey turtleneck choosing red flowers, Ghina beside her reaching for them. Autumn park, huge trees, golden leaves: Ghina <b>runs to the son, who kneels to catch her</b>; Layla, <b>pregnant</b>, walks behind carrying the bouquet; the hug.</p>
+<p>7:13 — redwood forest: the son kneels, rubs his eyes with his fists, breathes. 7:17 — low on the forest floor: the white-and-blue bouquet; his hand enters and <b>sets the silver lens case down beside it</b>. 7:28 — the headstone: <b>Beloved Father</b>. 7:30 — the three of them walk away down the path, hand in hand. Logo.</p>
+<p><span class="who son">Son</span> <span class="say">"Thank you… I just wish he could see the person I became."</span> · <span class="who layla">Layla</span> <span class="say">"I'm sure he is."</span></p>
+<div class="why"><b>Why:</b> he returns the lenses. The person he became is the father's real invention; the case goes back to its maker. (Generated stone text is unreliable — "Beloved Father" is Resolve typography.)</div>
+<details><summary>sheets 7:05–7:41</summary><img loading="lazy" src="sheets/d_13.jpg" alt=""><img loading="lazy" src="sheets/d_14.jpg" alt=""><img loading="lazy" src="sheets/d_15.jpg" alt=""></details></div></div>
+
+<h2 id="units">generation units</h2>
+<div class="h2sub">One long take per scene segment</div>
+<p class="muted small">Seedance 2.5 caps a job at 30 s, so a scene longer than that is two or three takes chained with Sequel (the previous take is the video reference). Every unit carries its references. Text labels, the title card, the caption and the headstone are Resolve overlays. Narration over Block 1 and the 24-hour-timer line can be in-clip or post voice — both are allowed by the rules.</p>
+<div class="tbl"><table>
+<tr><th>#</th><th>Take</th><th>Len</th><th>References</th><th>Speech</th></tr>
+<tr><td>U1</td><td>Prison cell, gas, collapse</td><td>6 s</td><td>—</td><td>narration (post)</td></tr>
+<tr><td>U2</td><td>Couch A — wide + argument, lines 1–6</td><td>30 s</td><td>ROOM, TABLE, FATHER, SON, voices</td><td>6 lines, one speaker per beat</td></tr>
+<tr><td>U3</td><td>Couch B — the case, what the lenses do (Sequel of U2)</td><td>30 s</td><td>+ LENS CASE</td><td>7 lines</td></tr>
+<tr><td>U4</td><td>Couch C — lenses in, "activate", eyes close/open, eye macro (Sequel of U3)</td><td>25 s</td><td>SON, FATHER voice</td><td>3 lines</td></tr>
+<tr><td>U5</td><td>Neural network → brain → red flare</td><td>12 s</td><td>—</td><td>LENS line "Clarity mode activated…"</td></tr>
+<tr><td>U6</td><td>Son's stare → pull back to TV reflection → POV table → colour drains → can turns black/skull → items scanned</td><td>30 s</td><td>ROOM, TABLE, SON, LENS UI</td><td>father "tell it to show you…", son "show me things as they really are"</td></tr>
+<tr><td>U7</td><td>Father in profile, scanned, then "doors / portals" speech</td><td>25 s</td><td>FATHER, ROOM, LENS UI, voice</td><td>father 1 speech, son "show me my distant future…"</td></tr>
+<tr><td>U8</td><td>Table POV → black hole in the wall → vortex</td><td>12 s</td><td>ROOM, TABLE</td><td>—</td></tr>
+<tr><td>U9</td><td>Future room: sprawled → roots grow out of him → fights → sinks</td><td>30 s</td><td>FUTURE SON, FUTURE ROOM</td><td>—</td></tr>
+<tr><td>U10</td><td>Clock 10:10 ticks → hand reaches 12 → stops → his gasp</td><td>12 s</td><td>FUTURE ROOM, FUTURE SON</td><td>—</td></tr>
+<tr><td>U11</td><td>Present: terrified close-up, "Why now?", father's answer, "bring honey"</td><td>25 s</td><td>ROOM, SON, FATHER, voices</td><td>2 lines</td></tr>
+<tr><td>U12</td><td>Motorcycle A — mirror, drone, bottle thrown, anger line</td><td>25 s</td><td>SON, LENS voice</td><td>lens 1, son 1</td></tr>
+<tr><td>U13</td><td>Motorcycle B — doors open → rectangle: crash, drain, driver → collapse</td><td>30 s</td><td>LENS UI, LENS voice</td><td>lens 1, son "I'll handle it"</td></tr>
+<tr><td>U14</td><td>Motorcycle C — walks out, picks up, bin, green light, rides off</td><td>20 s</td><td>SON</td><td>lens "Decision acknowledged…"</td></tr>
+<tr><td>U15</td><td>Honey — aisle, stand, question, answer, verdict, exit</td><td>30 s</td><td>SON, SELLER, voices</td><td>4 lines</td></tr>
+<tr><td>U16</td><td>Old woman market memory</td><td>6 s</td><td>SON</td><td>—</td></tr>
+<tr><td>U17</td><td>Apartment block timelapse</td><td>12 s</td><td>—</td><td>—</td></tr>
+<tr><td>U18</td><td>Date A — phone call, the walk, the door, first two lines</td><td>30 s</td><td>SON, LAYLA, voices</td><td>2 lines</td></tr>
+<tr><td>U19</td><td>Date B — POV table, the worlds, avatar, black, the real her</td><td>30 s</td><td>LAYLA, LENS voice</td><td>lens 4, son 3</td></tr>
+<tr><td>U20</td><td>Date C — side wide, both laughing</td><td>6 s</td><td>SON, LAYLA</td><td>—</td></tr>
+<tr><td>U21–25</td><td>Office · proposal · wedding with father · boxes · hospital</td><td>5×6 s</td><td>SON, LAYLA, FATHER</td><td>—</td></tr>
+<tr><td>U26–27</td><td>Baby at laptop · girl at laptop</td><td>done</td><td>GHINA</td><td>—</td></tr>
+<tr><td>U28</td><td>Flower market → park run → hug</td><td>25 s</td><td>LAYLA (pregnant), GHINA, SON</td><td>—</td></tr>
+<tr><td>U29</td><td>Forest: kneels, tears, the line; Layla's answer</td><td>20 s</td><td>SON, LAYLA, voices</td><td>2 lines</td></tr>
+<tr><td>U30</td><td>Bouquet, the case set down, headstone, walk away</td><td>20 s</td><td>LENS CASE, SON, LAYLA, GHINA</td><td>—</td></tr>
+</table></div>
+<p class="small muted">≈ 8 min of footage in ~30 jobs. At ~10–15 min per 30 s job on Unlimited, that is 5–7 hours of rendering if every take passes first time; realistically two evenings including retakes. Order: kit first (images, ~1 h) → U2 (proof that 30 s dialogue works with references) → couch chain → everything else in film order.</p>
+
+<h2 id="qc">per-clip checks</h2>
+<div class="h2sub">Nothing reaches your phone without passing these</div>
+<div class="card go"><ul>
+<li><b>Words:</b> faster-whisper transcript of the clip vs the script line — every line must match.</li>
+<li><b>Pace:</b> words per second of each line; the father must sit around 2 w/s (slow). Faster → retake.</li>
+<li><b>Face:</b> contact sheet of the clip vs the reference card — same beard, same hair, no glasses, same clothes.</li>
+<li><b>Props:</b> the table, the case and the lens UI compared with the kit.</li>
+<li><b>Logic:</b> the take does what this page says the original does at that timecode.</li>
+<li><b>Push:</b> ADB to DCIM/Camera as <code>NEURALSTAIN_U##_take#.mp4</code>; a text line on Telegram, no video attachments.</li>
+</ul></div>
+
+<h2>status</h2>
+<div class="h2sub">Where it stands right now</div>
+<div class="card warn"><h4>Blocked on the robot check</h4><p class="small">The 30 s couch test is typed in, Unlimited is on, duration 30 s, and the Generate press was answered by DataDome's slide-puzzle captcha instead of a job. It needs a human click in the automation Chrome (Moonlight → PC → the Chrome window on higgsfield.ai). I will not try to fool it.</p></div>
+<div class="card"><h4>On your phone (v1, for reference only)</h4><p class="small">29 clips named NEURALSTAIN_… — prison ×3, couch master + 16 dialogue beats, neurons, AR food scan, AR father scan, roots, clock, wake, father "the truth", baby, girl. These are the text-only fragments; they will be replaced by the v2 takes above.</p></div>
+<p class="muted small">Page: farshou5.github.io/neural-stain/remake.html · Script: <a href="index.html">index.html</a> · Original described: <a href="original.html">original.html</a></p>
+</div></body></html>
