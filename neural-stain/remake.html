@@ -222,6 +222,19 @@
 </table></div>
 <p class="small muted">≈ 8 min of footage in ~30 jobs. At ~10–15 min per 30 s job on Unlimited, that is 5–7 hours of rendering if every take passes first time; realistically two evenings including retakes. Order: kit first (images, ~1 h) → U2 (proof that 30 s dialogue works with references) → couch chain → everything else in film order.</p>
 
+<h2>second opinion</h2>
+<div class="h2sub">Codex + Kimi on the v2 plan (22 Aug)</div>
+<div class="card warn"><h4>Cannot be guaranteed — said before the days are spent</h4><ul class="small">
+<li><b>30 s dialogue takes</b> are attempted, not promised. Two people alternating in one take is the model's heaviest load. Odds go up with ONE speaker per take, 2–3 beats, a locked camera, and plain retries (failures are stochastic). References fix consistency, not the failure rate. Ladder: 10 s → 15 s → 20 s → 30 s.</li>
+<li><b>Exact food / case continuity inside a long take</b> and a frame-exact match to the original cut.</li>
+<li><b>Lip-sync and timbre from text direction.</b> Neither trusts "slow, tired voice" in a prompt.</li></ul></div>
+<div class="card go"><h4>What both recommend — adopted</h4><ul class="small">
+<li><b>Voice:</b> generate each father line once with a single cloned AI voice (external AI audio is allowed by the rules), attach that recording to the clip as <code>@Audio 1</code>, let the clip lip-sync to it. Same timbre by construction; pace comes from the file. One 8 s A/B test first. Fallback: re-voice in post + Higgsfield Lipsync inside the project.</li>
+<li><b>References per clip: 2–6</b>, only what is in frame — face card first, then hero prop (case, table), then room. Never write "no glasses" (negatives render as positives): glasses-free is baked into the FATHER card and never mentioned.</li>
+<li><b>Chaining:</b> Sequel/extension preserves identity and voice better than a fresh job; cap chains at 2–3 links, then re-anchor from the cards on a cut. The couch = 3–4 chained pairs, not one 8-link chain.</li>
+<li><b>All lens UI in Resolve:</b> cyan doors, the rectangle, FATIGUE / STRESS, the food labels, the skull can, the colour drain. Generated plates underneath; typography on top, identical every time.</li>
+<li><b>The deliverable, honestly:</b> locked faces, one father voice, the exact scene order, the UI exactly as in the original — built, not generated. Long oners where they succeed; chained 8–15 s segments where they don't.</li></ul></div>
+
 <h2 id="qc">per-clip checks</h2>
 <div class="h2sub">Nothing reaches your phone without passing these</div>
 <div class="card go"><ul>
